@@ -13,7 +13,7 @@ namespace Projet5\Model\Manager;
 use PDO;
 use Projet5\Model\Entity\Competence;
 
-class CompetenceManager
+class CompetenceManager extends Connex_Db
 {
     private $pdoStatement;
 
