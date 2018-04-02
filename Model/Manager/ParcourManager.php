@@ -12,20 +12,10 @@ namespace Projet5\Model\Manager;
 use PDO;
 use Projet5\Model\Entity\Parcour;
 
-class ParcourManager
+class ParcourManager extends Connex_Db
 {
-    private $pdo;
 
     private $pdoStatement;
-
-    /**
-    connexion à la bdd avec la fonction constructeur
-     * C'est une fonction PHP de connexion à la base de donnée via PDO
-     **/
-    public function __construct()
-    {
-        $this->pdo = new PDO('mysql:host=localhost; dbname=projet5', 'root','root');
-    }
 
     /**
      *

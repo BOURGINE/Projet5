@@ -179,6 +179,8 @@ class Controller
         $userManager = new UserManager();
         $users = $userManager->readAll();
 
+
+
         include(__DIR__ . "/../View/Backend/admin.php");
     }
 
