@@ -6,7 +6,7 @@
 
     <p> <?= $message ?> </p>
 
-    <p> <a href="index.php?action=accesAdmin"> RETOUR à ADMINISTRATION </a></p>
+    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINISTRATION </a></p>
 
 </div>
 

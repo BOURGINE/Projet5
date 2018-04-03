@@ -1,23 +1,23 @@
-<?php $title = 'Modifier Parcours'; ?>
+<?php $title = 'Modifier Certificat'; ?>
 
 <?php ob_start(); ?>
 
 <div>
-    <h1> Modifier Parcours</h1>
+    <h1> Modifier Certificat</h1>
 
-    <p> <a href="index.php?action=accesAdmin"> RETOUR à ADMINIST </a></p>
+    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINIST </a></p>
 
-    <form  action="index.php?action=parcour&order=update" method="POST" id="form_CreateCompetence" enctype="multipart/form-data" >
+    <form  action="index.php?action=certificat&order=update" method="POST" id="form_CreateCompetence" enctype="multipart/form-data" >
 
         <input type="hidden" id="id" name="id" value="<?=$certificat->getId();?>">
         <p>
             <label for="img"> Image </label>
-            <input type="file" id="tel" name="img" value="<?=$parcour->getImg();?>">
+            <input type="file" id="tel" name="img" value="<?=$certificat->getImg();?>">
         </p>
 
         <p>
             <label for="title"> Titre </label>
-            <input type="text" id="title" name="title" value="<?=$parcour->getTitle();?>">
+            <input type="text" id="title" name="title" value="<?=$certificat->getTitle();?>">
         </p>
 
 

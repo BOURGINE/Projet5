@@ -12,6 +12,7 @@ namespace Projet5\Controller;
 
 use Projet5\Model\Entity\Certificat;
 use Projet5\Model\Manager\CertificatManager;
+use Projet5\Model\Manager\MenuManager;
 
 class CertificatController
 {
@@ -99,11 +100,22 @@ class CertificatController
         }
     }
 
+
+    public function read($idrecup)
+    {
+        $certificatManager = new CertificatManager();
+        $certificat = $certificatManager->read($_GET['id']);
+    }
+
+
     public function formUpdate($recupInfos)
     {
         $certificatManager = new CertificatManager();
-
         $certificat = $certificatManager->read($_GET['id']);
+
+        //Menu
+        $menuManager = new MenuManager();
+        $menus = $menuManager->readAll();
 
         // IL doit aussi demandé le nouveau formulaire à la vue selon l'id
 
@@ -119,7 +131,7 @@ class CertificatController
         // J'envoi en les infos aux differents élements de la classe contact
         $certificat->setImg($_FILES['img']['name']);
         $certificat->setTitle($_POST['title']);
-        $certificat->setContent($_POST['cat']);
+        $certificat->setCat($_POST['cat']);
 
         // Je sauvegarde mes informations dans la base de données
 

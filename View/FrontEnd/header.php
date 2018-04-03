@@ -2,7 +2,7 @@
 if (isset($_SESSION['pseudo']))
 {
     //Affiche les infos de la session
-    $info1 = '<li><a href="index.php?action=accesAdmin">BACKOFFICE</a></li>';
+    $info1 = '<li><a href="index.php?action=code4liokoConnexion">BACKOFFICE</a></li>';
 }
 else
 {
@@ -28,7 +28,7 @@ else
             <li><a href="#competences">Compétences</a></li>
             <li><a href="#parcours">Parcours</a></li>
             <li><a href="#portefolio">Portefolio</a></li>
-            <li><a href="#nos_projets">Certificats</a></li>
+            <li><a href="#certificat">Certificats</a></li>
             <?= $info1;?>
         </ul>
     </nav>

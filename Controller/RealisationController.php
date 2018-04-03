@@ -113,7 +113,7 @@ class RealisationController
 
         // IL doit aussi demandé le nouveau formulaire à la vue selon l'id
 
-        include(__DIR__."/../View/Backend/form_UpdateParcours.php");
+        include(__DIR__."/../View/Backend/form_UpdateRealisation.php");
     }
 
 
@@ -130,7 +130,7 @@ class RealisationController
         $realisation->setTitle($_POST['title']);
         $realisation->setContent($_POST['content']);
         $realisation->setLinkView($_POST['link_view']);
-        $realisation->setLinkGit($_POST['link2_git']);
+        $realisation->setLinkGit($_POST['link_git']);
 
         // Je sauvegarde mes informations dans la base de données
 

@@ -61,7 +61,14 @@ try {
 
         elseif ($_GET['action'] == 'code4liokoConnexion')
         {
-            $controller->connexion($_POST);
+            if(isset($_SESSION['id']))
+            {
+                $controller->admin();
+            }
+            else
+            {
+                $controller->connexion($_POST);
+            }
         }
 
         elseif ($_GET['action'] == 'code4liokoFormCreate')
@@ -73,11 +80,6 @@ try {
         {
             session_destroy();
             header('Location: index.php');
-        }
-
-        elseif($_GET['action'] == 'accesAdmin')
-        {
-            $controller->Admin();
         }
 
 
@@ -290,6 +292,11 @@ try {
             elseif($_GET['order'] == 'update')
             {
                 $certificatController->update();
+            }
+
+            elseif($_GET['order'] == 'read')
+            {
+                $certificatController->read($_GET['id']);
             }
             elseif($_GET['order'] == 'delete')
             {

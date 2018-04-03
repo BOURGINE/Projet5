@@ -5,7 +5,7 @@
 <div>
     <h1> Modifier l'article</h1>
 
-    <p> <a href="index.php?action=code4lioko"> RETOUR à ADMINIST </a></p>
+    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINIST </a></p>
 
     <form  action="index.php?action=competence&order=updateCompetence" method="POST" id="form_CreateCompetence" enctype="multipart/form-data" >
 

@@ -7,7 +7,6 @@ if (isset($_SESSION['pseudo']))
 
 ?>
 
-
 <!DOCTYPE HTML>
 
 <html lang="fr">
@@ -17,7 +16,7 @@ if (isset($_SESSION['pseudo']))
 
     <link rel="stylesheet" href="Public/css/style.css" />
     <link rel="stylesheet" href="Public/css/main.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="Public/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 8]> <link rel="stylesheet" href="Public/css/ie8.css" /><![endif]-->
     <title> <?= $title ?></title>
 </head>
 

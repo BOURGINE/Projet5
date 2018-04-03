@@ -121,7 +121,7 @@ class CompetenceController
         $competence= $competenceManager->read($_POST['id']);
 
         // J'envoi en les infos aux differents élements de la classe contact
-        $competence->setImg($_POST['img']['name']);
+        $competence->setImg($_FILES['img']['name']);
         $competence->setTitle($_POST['title']);
         $competence->setContent($_POST['content']);
         $competence->setLink($_POST['link']);

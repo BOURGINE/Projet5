@@ -5,7 +5,7 @@
 <div>
     <h1> Ajouter un Certificat</h1>
 
-    <p> <a href="index.php?action=code4lioko"> RETOUR à ADMINISTRATION </a></p>
+    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINISTRATION </a></p>
 
     <form  action="index.php?action=certificat&order=createCertificat" method="POST" id="form_CreateCertificat" enctype="multipart/form-data">
 

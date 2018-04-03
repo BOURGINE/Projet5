@@ -5,7 +5,7 @@
 <div>
     <h1> Modifier Parcours</h1>
 
-    <p> <a href="index.php?action=accesAdmin"> RETOUR à ADMINIST </a></p>
+    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINIST </a></p>
 
     <form  action="index.php?action=parcour&order=update" method="POST" id="form_CreateCompetence" enctype="multipart/form-data" >
 

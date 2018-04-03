@@ -5,7 +5,7 @@
 <div>
     <h1> Ajouter Un MENU</h1>
 
-    <p> <a href="index.php?action=code4lioko"> RETOUR à ADMINISTRATION </a></p>
+    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINISTRATION </a></p>
 
     <form  action="index.php?action=menu&&order=createMenu" method="POST" id="form_CreateCompetence">
 

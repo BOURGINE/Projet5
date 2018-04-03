@@ -30,7 +30,7 @@
             <?php else:?>
                 <table>
                     <tr>
-                        <th > LOGO </th>
+                        <th> LOGO </th>
                         <th> Titre  </th>
                         <th> Description  </th>
                         <th> Categorie </th>
@@ -126,7 +126,7 @@
                             <td> <?= $realisation->getContent()?></td>
                             <td> <?= $realisation->getLinkView()?></td>
                             <td> <?= $realisation->getLinkGit()?></td>
-                            <td> <a href="index.php?action=realisation&order=update&id=<?= $realisation->getId()?>"> MODIFIER</a> </td>
+                            <td> <a href="index.php?action=realisation&order=formUpdate&id=<?= $realisation->getId()?>"> MODIFIER</a> </td>
                             <td> <a href="index.php?action=realisation&order=delete&id=<?= $realisation->getId()?>"> SUPPRIMER</a> </td>
                         </tr>
                     <?php endforeach; ?>
@@ -162,7 +162,7 @@
                     <?php foreach ($menus as $menu):?>
                         <tr>
                             <td> <?= $menu->getTitle();?>  </td>
-                            <td> <a href="index.php?action=menu&order=update&id=<?= $menu->getId();?>"> MODIFIER</a> </td>
+                            <td> <a href="index.php?action=menu&order=formUpdate&id=<?= $menu->getId();?>"> MODIFIER</a> </td>
                             <td> <a href="index.php?action=menu&order=delete&id=<?= $menu->getId();?>"> SUPPRIMER</a> </td>
                         </tr>
                     <?php endforeach; ?>
@@ -199,7 +199,7 @@
                         <tr>
                             <td> <?= $certificat->getTitle()?>  </td>
                             <td> <?= $certificat->getCat()?>  </td>
-                            <td> <a href="index.php?action=certificat&order=update&id=<?= $certificat->getId()?>"> MODIFIER</a> </td>
+                            <td> <a href="index.php?action=certificat&order=formUpdate&id=<?= $certificat->getId()?>"> MODIFIER</a> </td>
                             <td> <a href="index.php?action=certificat&order=delete&id=<?= $certificat->getId()?>"> SUPPRIMER</a> </td>
                         </tr>
                     <?php endforeach; ?>
@@ -211,7 +211,6 @@
     </div>
 
 </div>
-
 
     <!-- ****************************************
                3 - les utilisateurs

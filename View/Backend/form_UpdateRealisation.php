@@ -3,9 +3,9 @@
 <?php ob_start(); ?>
 
 <div>
-    <h1> Modifier Parcours</h1>
+    <h1> Modifier Réalisation</h1>
 
-    <p> <a href="index.php?action=accesAdmin"> RETOUR à ADMINIST </a></p>
+    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINISTRATION </a></p>
 
     <form  action="index.php?action=realisation&order=update" method="POST" id="form_UpdateRealisation" enctype="multipart/form-data" >
 
@@ -21,18 +21,19 @@
         </p>
 
         <p>
-            <label for="content"> Contenu </label>
+            <label for="content"> Contenu</label>
             <textarea name="content" form="form_UpdateRealisation" cols="100" rows="10" class="tinymce"> <?=$realisation->getContent();?></textarea>
+
         </p>
 
         <p>
-            <label for="link"> Lien (école)</label>
-            <input type="url" id="title" name="link" value="<?=$realisation->getLink1();?>">
+            <label for="link_view"> Lien vue</label>
+            <input type="url" id="title" name="link_view" value="<?=$realisation->getLinkView();?>">
         </p>
 
         <p>
-            <label for="link"> Lien (école)</label>
-            <input type="url" id="title" name="link" value="<?=$realisation->getLink2();?>">
+            <label for="link_git"> Lien github</label>
+            <input type="url" id="title" name="link_git" value="<?=$realisation->getLinkGit();?>">
         </p>
         <p>
             <input type="submit" value="Modifier Parcours">

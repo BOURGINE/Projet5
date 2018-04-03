@@ -6,31 +6,39 @@ MES MODIFICATIONS
 
 */
 
-
+header h2
+{
+    text-align: center;
+}
 /*-----------------------------------------------
  	 NOS PROJETS - certificats
  ---------------------------------------------*/
 
-#nos_projets { /* Pour les ancres*/
+#certificat
+{ /* Pour les ancres*/
     width: 100%;
 }
 
-nav ul li{
+nav ul li
+{
     display: inline-block;
     list-style: none;
 }
 
-#nos_projets1{
+#certificat_menu
+{
     background-color: #F5F5F5;
     text-align: center;
     padding: 10px;
 }
 
-#nav2{
+#nav2
+{
     margin-top: 20px;
 }
 
-#nav2 ul li{
+#nav2 ul li
+{
     background-color: #DCDCDC;
     margin: auto;
     margin:-2px;
@@ -85,7 +93,7 @@ nav ul li{
 
 }
 
-#nos_projets2{
+#certificat_enfant{
     background-color: #F5F5F5;
     display: flex;
     flex-wrap: wrap;
@@ -93,130 +101,77 @@ nav ul li{
     justify-content: center;
 }
 
-.element{
+.element
+{
     width: 280px;
     height: 200px;
     margin:15px;
-
 }
 
-.image{
+.image
+{
     height: 100%;
     width: 100%;
 }
 
-.texte_element{
-    background-color: rgba(0,0,0,0.5);
-    opacity: 0;
-    margin-top:-65px;
-    height: 30%;
-    color:white;
-    padding-left: 10px;
+.element:hover
+{
+    margin-top: -100px;
+    width: 500px;
+    height: 300px;
+    transition: 1s;
 }
-
-.element:hover .texte_element{
-    opacity:0.9;
-    transition: 2s;
-}
-
-.fa-eye{
-    background-color: #2EA3BE;
-    border: 5px #FFFFFF solid;
-    border-radius: 100%;
-    margin-left: 200px;
-    margin-top:-30px;
-    color: white;
-    position: absolute;
-    padding: 10px;
-
-}
-
-.text_p2{
-    margin-left: 20px;
-}
-
-#popup{
-    padding: 15%;
-    padding-top:8%;
-    position: absolute;
-    top: 1200px;
-    z-index: 100;
-    background-color:rgba(255,255,255,0.9);
-    display: none;
-}
-
-#element2{
-    width: 70%;
-    margin: auto;
-}
-
-#element2 img{
-    width: 100%;
-
-}
-
-#popup:target {
-    display: block;
-    text-align: center;
-    transition: 4s;
-}
-
-#fermer:target #popup{
-    display:none;
-}
-
-#croix{
-    text-align: right;
-}
-
-.text_popup{
-    font-size: 20px;
-    left: 20px;
-    padding-left:20px;
-}
-
-input{
-    font-size: 15px;
-}
-
 /*----------------------------------------
-		 NOS SERVICES - COMPETENCES
+		 COMPETENCES
 -----------------------------------------*/
 #competence_boby
 {
     display: flex;
-    justify-content: space-between;
-    border: 10px red solid;
+    justify-content: space-around;
 }
 
 .competence_enfant
 {
     width: 49%;
     min-width: 250px;
-
 }
 
-.ordinateur{
+h1
+{
+    text-align: center;
+}
+
+.titre_h1
+{
+
+}
+.ordinateur
+{
     width: 100%;
     text-align: center;
     margin-left: auto;
 }
 
-#bloc_list{
+#bloc_list
+{
     width: 100%;
     display: block;
 }
 
-.section_liste{
+.section_liste
+{
     height: auto;
     width: auto;
     display: flex;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: white;
 }
 
-.div_icone{
+.div_icone
+{
     width: 60px;
     height: 60px;
-    border: 2px blue solid;
 }
 
 .div_icone img
@@ -229,7 +184,8 @@ input{
 }
 
 
-.div_texte{
+.div_texte
+{
     width: 87%;
     height:auto;
     padding-left: 15px;
@@ -237,14 +193,16 @@ input{
 }
 
 
-.icone{
+.icone
+{
     color: #2EA3BE;
     border: 1px solid grey; /*bordure à ne pas éffacer*/
     padding: 10px;
     border-radius: 100%;
 }
 
-.ligne{
+.ligne
+{
     border-bottom: 1px grey solid;
     height: 10px;
     width: 100px;
@@ -254,7 +212,8 @@ input{
 
 }
 
-.point1{
+.point1
+{
     color: #2EA3BE;
     background-color: white;
     border: 4px solid white; /*bordure à ne pas éffacer*/
@@ -262,14 +221,16 @@ input{
 }
 
 
-h2{
+h2
+{
     text-shadow: 1px 1px 3px;
     font-size: 50px;
     margin-bottom: 15px;
 }
 
 
-.point{
+.point
+{
     color: #2EA3BE;
     border: 4px solid white; /*bordure à ne pas éffacer*/
     border-radius: 100%;
@@ -292,6 +253,13 @@ h2{
 /*-------------------------------------------------
 			         Parcours
  ------------------------------------------------*/
+#parcours
+{
+    background-color: white;
+}
+
+
+
 .image.featured .parcours
 {
     height: 250px;
@@ -340,7 +308,10 @@ td, th
         flex-wrap: wrap;
     }
 
-
+    .competence_enfant
+    {
+        width: 100%;
+    }
 }
 
 /* ------------------------------
@@ -358,7 +329,8 @@ td, th
 
     .competence_enfant
     {
-        flex-wrap: wrap;
+        width: 100%;
     }
+
 
 }
