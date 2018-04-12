@@ -10,6 +10,9 @@ header h2
 {
     text-align: center;
 }
+
+
+
 /*-----------------------------------------------
  	 NOS PROJETS - certificats
  ---------------------------------------------*/
@@ -19,11 +22,33 @@ header h2
     width: 100%;
 }
 
+#nav
+{
+    position: fixed !important;
+    z-index: 999 !important;
+    top:0 !important;
+    margin-top: 0 !important;
+
+    background-image: url("../../Public/images/header.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    font-weight: bold;
+}
+
 nav ul li
 {
     display: inline-block;
     list-style: none;
 }
+
+nav ul li:hover
+{
+    color: red !important;
+    background-color: black !important;
+    border: 2px white solid !important;
+}
+
 
 #certificat_menu
 {
@@ -45,7 +70,8 @@ nav ul li
     position: relative;
 }
 
-#nav2 ul li a{
+#nav2 ul li a
+{
     text-decoration: none;
     color: grey;
     font-size: 20px;
@@ -53,29 +79,33 @@ nav ul li
     padding:15px;
 }
 
-
-#nav2 ul li a:hover{
+#nav2 ul li a:hover
+{
     color: white;
 }
 
-#nav2 ul li:first-child{
+#nav2 ul li:first-child
+{
     border-radius: 5px 0 0 5px;
 }
 
-#nav2 ul li:last-child{
+#nav2 ul li:last-child
+{
     border-radius: 0 5px 5px 0;
 }
 
-#nav2 ul li:hover{
+#nav2 ul li:hover
+{
     background-color: #2EA3BE; /* gris claire*/
-    box-shadow: 0px 5px #2b6f91;
+    box-shadow: 0 5px #2b6f91;
 }
 
 /* ----------------------------------------
 			*Création de triangle*
 -------------------------------------------*/
 
-#nav2 ul li:hover::before {
+#nav2 ul li:hover::before
+{
     content:"";
     position:absolute;
     margin-top:53px;
@@ -93,7 +123,8 @@ nav ul li
 
 }
 
-#certificat_enfant{
+#certificat_enfant
+{
     background-color: #F5F5F5;
     display: flex;
     flex-wrap: wrap;
@@ -103,8 +134,8 @@ nav ul li
 
 .element
 {
-    width: 280px;
-    height: 200px;
+    width: 350px;
+    height: 250px;
     margin:15px;
 }
 
@@ -116,14 +147,23 @@ nav ul li
 
 .element:hover
 {
-    margin-top: -100px;
-    width: 500px;
+    margin-top: -50px;
+    width: 450px;
     height: 300px;
     transition: 1s;
 }
 /*----------------------------------------
 		 COMPETENCES
 -----------------------------------------*/
+
+
+.reel, .carousel
+{
+    padding-top: 70px !important;
+    padding-bottom: 10px !important;
+}
+
+
 #competence_boby
 {
     display: flex;
@@ -240,14 +280,6 @@ h2
     font-size: 0.6em;
 }
 
-/*-------------------------------------------------
-			         CONTACT
- ------------------------------------------------*/
-
-
-
-
-
 
 
 /*-------------------------------------------------
@@ -266,7 +298,23 @@ h2
 }
 
 
+/*-------------------------------------------------
+			       REALISATIONS
+ ------------------------------------------------*/
 
+.realisationContent
+{
+    display: none;
+}
+.realisationContent:hover
+{
+    display:block;
+}
+
+#image_realisation
+{
+    height: 250px;
+}
 /*-------------------------------------------------
 			       BACK OFFICE
  ------------------------------------------------*/

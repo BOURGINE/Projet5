@@ -27,14 +27,26 @@ class Menu
      */
     public function getTitle()
     {
-        return $this->title;
+        if(!isset($title) && !is_string($this->title)){
+            echo 'la fonction getTitle a du mal a récupérer le titre';
+        }
+        return (string) htmlspecialchars($this->title);
     }
 
     /**
      * @param mixed $title
+     * @return $this
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        if(!isset($title) && !is_string($title))
+        {
+            echo'le titre n\'est pas bien définie';
+        }
+        else
+        {
+            $this->title = htmlspecialchars($title);
+        }
+        return $this;
     }
 }

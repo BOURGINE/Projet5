@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <div>
-    <h1> Modifier l'article</h1>
+    <h1> Modifier competences</h1>
 
     <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINIST </a></p>
 

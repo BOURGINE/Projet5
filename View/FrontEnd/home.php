@@ -182,13 +182,13 @@ include('../Projet5/View/Frontend/header.php');
         <?php foreach ($realisations as $realisation):?>
 
         <article>
-            <a href="<?= $realisation->getLinkView();?>" class="image featured">
+            <a href="<?= $realisation->getLinkView();?>" class="image featured" id="image_realisation">
                 <img src="Public/images/<?= $realisation->getImg();?>" alt="réalisations"/>
             </a>
             <header>
                 <h3><?= $realisation->getTitle();?></h3>
             </header>
-            <p> <?= $realisation->getContent();?></p>
+            <p class="realisationContent"> <?= $realisation->getContent();?></p>
             <a href="<?= $realisation->getLinkView();?>"><button>Vue</button></a> <a href="<?= $realisation->getLinkGit();?>"><button>Github</button></a>
         </article>
 
@@ -206,7 +206,6 @@ include('../Projet5/View/Frontend/header.php');
         <!-- Certificat -->
 <section id="certificat" class="reel">
 
-
     <!-- MENU NAVIGATION -->
     <aside id="certificat_menu">
         <h2>CERTIFICATS DE REUSSITE</h2>
@@ -222,11 +221,11 @@ include('../Projet5/View/Frontend/header.php');
                 <?php else:?>
                     <ul>
                         <li>
-                            <a href="index.php?action=certificat&order=readAll#certificat_enfant"> ALL</a>
+                            <a href="index.php?action=certificat&order=readAll#certificat"> ALL</a>
                         </li>
                         <?php foreach ($menus as $menu):?>
                             <li>
-                                <a href="index.php?action=certificat&order=readCat&cat=<?=$menu->getTitle();?>#certificat_enfant"> <?=$menu->getTitle();?></a>
+                                <a href="index.php?action=certificat&order=readCat&cat=<?=$menu->getTitle();?>#certificat"> <?=$menu->getTitle();?></a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -274,26 +273,6 @@ include('../Projet5/View/Frontend/header.php');
 
         <div class="row">
 
-            <!-- recommandations linkedin -->
-            <section class="4u 12u(mobile)">
-                <header>
-                    <h2 class="icon fa-linkedin"><span class="label">Tweets</span></h2>
-                </header>
-                <ul class="divided">
-                    <li>
-                        <article class="tweet">
-                            nulla convallis tique ante sociis accumsan.
-                            <span class="timestamp">5 minutes ago</span>
-                        </article>
-                    </li>
-                    <li>
-                        <article class="tweet">
-                            Hendrerit rutrum quisque.
-                            <span class="timestamp">30 minutes ago</span>
-                        </article>
-                    </li>
-                </ul>
-            </section>
 
             <!-- projets github -->
             <section class="4u 12u(mobile)">
@@ -315,11 +294,11 @@ include('../Projet5/View/Frontend/header.php');
             <section>
 
                 <header>
-                    <h2 class="icon fa-adress-circled"><span class="label">Tweets</span></h2>
+                    <h2 class="icon fa-building"><span class="label">Posts</span></h2>
                 </header>
 
                 <div>
-                    <p> <strong>FAGADE Bourgine Bérenger</strong> <br> 11 A Rue Léon Blum 68100 Mulhouse<br>Tel 06 52 26 64 37
+                    <p> <strong style="color: white;">FAGADE Bourgine Bérenger</strong> <br> 11 A Rue Léon Blum 68100 Mulhouse<br>Tel 06 52 26 64 37
                     </p>
                 </div>
             </section>
@@ -331,9 +310,17 @@ include('../Projet5/View/Frontend/header.php');
         <!-- BAS DE PAGE-->
         <div class="row">
             <div class="12u">
+                <!-- RESEAUX SOCIAUX -->
+                <section class="contact">
+                    <ul class="icons">
+                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon fa-github"><span class="label">Instagram</span></a></li>
+                    </ul>
+                </section>
                 <!-- Copyright -->
                 <div class="copyright">
-                    <p class="menu">
+                    <p class="menu" style="text-align: center;">
                         &copy; 2018. Tout droit réservé.  Bourgine Bérenger FAGADE
                     </p>
                 </div>

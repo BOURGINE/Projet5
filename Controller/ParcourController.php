@@ -69,7 +69,7 @@ class ParcourController
                 // Testons si l'extension est autorisée
                 $infosfichier = pathinfo($_FILES['img']['name']);
                 $extension_upload = $infosfichier['extension'];
-                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+                $extensions_autorisees = array('pdf','jpg', 'jpeg', 'gif', 'png');
                 if (in_array($extension_upload, $extensions_autorisees))
                 {
                     // On peut valider le fichier et le stocker définitivement

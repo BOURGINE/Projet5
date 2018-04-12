@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <div>
-    <h1> Ajouter un article</h1>
+    <h1> Ajouter un Parcours</h1>
 
     <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINISTRATION </a></p>
 

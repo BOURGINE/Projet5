@@ -47,15 +47,27 @@ class Realisation
      */
     public function getTitle()
     {
-        return $this->title;
+        if(!isset($title) && !is_string($this->title)){
+            echo 'la fonction getTitle a du mal a récupérer le titre';
+        }
+        return (string) htmlspecialchars($this->title);
     }
 
     /**
      * @param mixed $title
+     * @return $this
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        if(!isset($title) && !is_string($title))
+        {
+            echo'le titre n\'est pas bien définie';
+        }
+        else
+        {
+            $this->title = htmlspecialchars($title);
+        }
+        return $this;
     }
 
     /**
@@ -63,17 +75,28 @@ class Realisation
      */
     public function getContent()
     {
-        return $this->content;
+        if(!isset($content) && !is_string($this->content)){
+            echo 'la fonction getContent a du mal a récupérer le titre';
+        }
+        return (string) htmlspecialchars($this->content);
     }
 
     /**
      * @param mixed $content
+     * @return $this
      */
     public function setContent($content)
     {
-        $this->content = $content;
+        if(!isset($content) && !is_string($content))
+        {
+            echo'le contenu n\'est pas bien définie';
+        }
+        else
+        {
+            $this->content = htmlspecialchars($content);
+        }
+        return $this;
     }
-
     /**
      * @return mixed
      */

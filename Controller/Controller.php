@@ -45,7 +45,6 @@ class Controller
 
     public function home()
     {
-
         // On instancie tous les manager Ici et appelle leur fonction de lecture (read)
 
         // Competences
@@ -75,7 +74,6 @@ class Controller
 
     public function HomeReadCat($cat)
     {
-
         // On instancie tous les manager Ici et appelle leur fonction de lecture (read)
 
         // Competences
@@ -178,9 +176,6 @@ class Controller
         //Certificat
         $userManager = new UserManager();
         $users = $userManager->readAll();
-
-
-
 
         include(__DIR__ . "/../View/Backend/admin.php");
     }
