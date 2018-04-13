@@ -12,7 +12,6 @@ header h2
 }
 
 
-
 /*-----------------------------------------------
  	 NOS PROJETS - certificats
  ---------------------------------------------*/
@@ -20,6 +19,7 @@ header h2
 #certificat
 { /* Pour les ancres*/
     width: 100%;
+    background-color: white;
 }
 
 #nav
@@ -42,9 +42,8 @@ nav ul li
     list-style: none;
 }
 
-nav ul li:hover
+#nav ul li:hover
 {
-    color: red !important;
     background-color: black !important;
     border: 2px white solid !important;
 }
@@ -52,7 +51,6 @@ nav ul li:hover
 
 #certificat_menu
 {
-    background-color: #F5F5F5;
     text-align: center;
     padding: 10px;
 }
@@ -125,7 +123,6 @@ nav ul li:hover
 
 #certificat_enfant
 {
-    background-color: #F5F5F5;
     display: flex;
     flex-wrap: wrap;
     flex-direction:row;
@@ -302,19 +299,33 @@ h2
 			       REALISATIONS
  ------------------------------------------------*/
 
+#image_realisation
+{
+    height: 220px;
+}
+
 .realisationContent
 {
     display: none;
-}
-.realisationContent:hover
-{
-    display:block;
+   height: auto;
 }
 
-#image_realisation
+article:hover .realisationContent
 {
-    height: 250px;
+    display: block;
+    transition: display 5s;
+    -moz-transition: display 5s;
+    height: 220px;
 }
+
+article:hover #image_realisation
+{
+    display: none;
+    transition: dispay 5s;
+    -moz-transition: display 5s;
+}
+
+
 /*-------------------------------------------------
 			       BACK OFFICE
  ------------------------------------------------*/
@@ -339,6 +350,32 @@ td, th
     padding: 5px !important;;
 }
 
+.entete_session, .corps_session
+{
+    background-color: white;
+    width: 100%;
+}
+
+.corps_session
+{
+    display: none;
+}
+
+
+#corps_competence:target,
+#corps_parcours:target,
+#corps_realisation:target,
+#corps_menu:target,
+#corps_certificat:target,
+#corps_utilisateur:target
+{
+    display: block;
+}
+
+#fermer:target .corps_session
+{
+    display: none;
+}
 
 /*-------------------------------------------------
 			      media query

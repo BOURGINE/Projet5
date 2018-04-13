@@ -170,6 +170,7 @@ include('../Projet5/View/Frontend/header.php');
 
     <div class="reel">
 
+
         <?php if(empty($realisations)):?>
             <p> il n'y a aucune Parcours  </p>
 
@@ -181,20 +182,23 @@ include('../Projet5/View/Frontend/header.php');
 
         <?php foreach ($realisations as $realisation):?>
 
-        <article>
-            <a href="<?= $realisation->getLinkView();?>" class="image featured" id="image_realisation">
-                <img src="Public/images/<?= $realisation->getImg();?>" alt="réalisations"/>
-            </a>
-            <header>
-                <h3><?= $realisation->getTitle();?></h3>
-            </header>
-            <p class="realisationContent"> <?= $realisation->getContent();?></p>
-            <a href="<?= $realisation->getLinkView();?>"><button>Vue</button></a> <a href="<?= $realisation->getLinkGit();?>"><button>Github</button></a>
-        </article>
+                    <article>
+                        <a href="<?= $realisation->getLinkView();?>" id="image_realisation" class="image featured" >
+                            <img class="image" src="Public/images/<?= $realisation->getImg();?>" alt="réalisations" style="width:100%"/>
+                        </a>
+                        <div class="session_content">
+                            <header>
+                                <h3><?= $realisation->getTitle();?></h3>
+                            </header>
+                            <p class="realisationContent"> <?= $realisation->getContent();?> </p>
+                            <a href="<?= $realisation->getLinkView();?>"><button>Vue</button></a> <a href="<?= $realisation->getLinkGit();?>"><button>Github</button></a>
+                        </div>
+                    </article>
 
-        <?php endforeach; ?>
 
-            <?php endif;?>
+         <?php endforeach; ?>
+
+         <?php endif;?>
         <?php endif;?>
 
     </div>

@@ -2529,15 +2529,16 @@
 
 			.carousel article .image {
 				position: relative;
-				left: -1em;
+				left: -0.5em ;
 				top: 0;
+				height: 100%;
 				width: auto;
 				margin-right: -2em;
-				margin-bottom: 3em;
+				margin-bottom: 1em;
 			}
 
 			.carousel article p {
-				text-align: center;
+				text-align: justify;
 			}
 
 /* Wide */
