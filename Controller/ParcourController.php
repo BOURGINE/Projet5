@@ -43,13 +43,14 @@ class ParcourController
         if($saveIsOk){
             $message = 'Parcours bien ajouté';
 
+            // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
+            $this->saveImg();
+
         } else{
             $message = 'erreur survenu. Action non effectué';
         }
         // NB: Il faut que je retourne le résultat en HTLM. Je pense que ça doit etre au niveau de la vue.
 
-        // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
-        $this->saveImg();
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
     }
 
@@ -133,6 +134,9 @@ class ParcourController
         if($saveIsOk)
         {
             $message = 'Félicitation, parours a été modifié';
+
+            // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
+            $this->saveImg();
         }
         else
         {
@@ -141,9 +145,6 @@ class ParcourController
 
         //NB: il faut que je retroune le réslutat en HTML
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
-
-        // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
-        $this->saveImg();
     }
 
 

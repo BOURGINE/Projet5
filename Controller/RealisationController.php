@@ -45,6 +45,9 @@ class RealisationController
 
         if($saveIsOk){
             $message = 'Realisation bien ajouté';
+
+            // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
+            $this->saveImg();
         }
 
         else
@@ -53,8 +56,6 @@ class RealisationController
         }
         // NB: Il faut que je retourne le résultat en HTLM. Je pense que ça doit etre au niveau de la vue.
 
-        // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
-        $this->saveImg();
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
     }
 
@@ -139,6 +140,9 @@ class RealisationController
         if($saveIsOk)
         {
             $message = 'Félicitation, realisation a été modifié';
+
+            // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
+            $this->saveImg();
         }
         else
         {
@@ -148,8 +152,6 @@ class RealisationController
         //NB: il faut que je retroune le réslutat en HTML
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
 
-        // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
-        $this->saveImg();
     }
 
 

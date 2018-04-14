@@ -42,14 +42,15 @@ class CertificatController
 
         if($saveIsOk){
             $message = 'Certificat bien ajouté';
-
-        } else{
+            // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
+            $this->saveImg();
+        }
+        else{
             $message = 'erreur survenu. Action non effectué';
         }
         // NB: Il faut que je retourne le résultat en HTLM.
 
-        // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
-        $this->saveImg();
+
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
     }
 
@@ -100,13 +101,20 @@ class CertificatController
         }
     }
 
-
+    /**
+     ** Cette fonction lit un certificat spécifique en fonction de sont id.
+     * Elle est Permet de lit le certificat pour modification
+     **/
     public function read($idrecup)
     {
         $certificatManager = new CertificatManager();
         $certificat = $certificatManager->read($_GET['id']);
     }
 
+    /**
+     ** Cette fonction appelle le formulaire de modification
+     * Ce formulaire récupère et lit les informations présentes dans la bdd
+     **/
 
     public function formUpdate($recupInfos)
     {
@@ -122,6 +130,9 @@ class CertificatController
         include(__DIR__."/../View/Backend/form_UpdateCertificat.php");
     }
 
+    /**
+     ** Envoi des informations mise à jours dans la base de données
+     **/
 
     public function update()
     {
@@ -139,15 +150,18 @@ class CertificatController
 
         if($saveIsOk){
             $message = 'Félicitation, certificat a été modifié';
-        }else{
+
+            // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
+            $this->saveImg();
+        }
+        else
+        {
             $message = 'erreur au niveau de la modification de votre competence';
         }
 
         //NB: il faut que je retroune le réslutat en HTML
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
 
-        // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
-        $this->saveImg();
     }
 
 

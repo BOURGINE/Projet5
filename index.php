@@ -195,7 +195,6 @@ try {
 
         }
 
-
         /**
          *
          * GESTION DES PARCOURS

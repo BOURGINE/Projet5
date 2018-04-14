@@ -128,7 +128,7 @@ class Controller
         else
         {
             $this->formConnexion();
-            echo "<script>alert(\"Identifiant ou Mot de passe incorrect\")</script>";
+            echo "<script> alert(\"Identifiant ou Mot de passe incorrect\")</script>";
         }
     }
 

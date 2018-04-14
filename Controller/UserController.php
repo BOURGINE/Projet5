@@ -23,7 +23,6 @@ class UserController
         $pass_hache = password_hash($contenu['pass'], PASSWORD_DEFAULT);
 
 
-
         $user = new user();
         $user->setPseudo($contenu['pseudo']); // Regarder la vidéo sur les méthodes chainées
         $user->setPass($pass_hache);

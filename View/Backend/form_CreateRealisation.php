@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<div>
+<div class="page_form">
     <h1> Ajouter une REALISATION</h1>
 
     <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINISTRATION </a></p>
