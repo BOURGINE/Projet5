@@ -22,16 +22,16 @@
 
         <p>
             <label for="content"> Contenu </label>
-            <textarea name="content" form="form_CreateCompetence" cols="100" rows="10" class="tinymce"> </textarea>
+            <textarea  id="content" name="content" form="form_CreateCompetence" cols="100" rows="10" class="tinymce"> </textarea>
         </p>
 
         <p>
             <label for="link"> Lien (vers certificats)</label>
-            <input type="url" id="title" name="link">
+            <input type="url" id="link" name="link">
         </p>
 
         <label for="categorie"> Catégorie (1 pour Front et 2 pour Back)</label>
-        <input type="number" min="1" max="2" name="categorie" >
+        <input type="number" min="1" max="2" name="categorie" id="categorie">
 
         <p>
             <input type="submit" value="Ajouter une Competence">

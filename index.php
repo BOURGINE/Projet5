@@ -71,9 +71,19 @@ try {
             }
         }
 
+
         elseif ($_GET['action'] == 'code4liokoFormCreate')
         {
-            $controller->formCreateUser();
+            // Vérifie s'il y a déjà une session. Car seul une personne connecté peut crée un Admin
+            if(isset($_SESSION['id']))
+            {
+                $controller->formCreateUser();
+            }
+            // Sinon, renvoi-le l'accueil, c'est un imposteur.
+            else
+            {
+                header('Location: index.php');
+            }
         }
 
         elseif ($_GET['action'] == 'deconnexion')
@@ -90,18 +100,42 @@ try {
          **/
 
 
-
         elseif ($_GET['action'] == 'code4liokoCreateUser')
         {
-            $userController->createUser($_POST);
+            // Vérifie s'il y a déjà une session. Car seul une personne connecté peut crée un Admin
+            if(isset($_SESSION['id']))
+            {
+                // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
+                if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['confirmPass']) && ($_POST['pass']) == ($_POST['confirmPass']))
+                {
+                    $userController->createUser($_POST);
+                }
+               else
+               {
+                   throw new Exception('Vous devez remplir tous les champs. Assurez-vous que le mot de passe soit identique');
+               }
+            }
+
+            // Sinon, renvoi-le l'accueil, c'est un imposteur.
+            else
+            {
+                header('Location: index.php');
+            }
         }
 
         elseif ($_GET['action'] == 'code4liokoDelete')
         {
-            $userController->deleteUser($_GET['id']);
+            // Vérifie s'il y a déjà une session. Car seul une personne connecté peut del
+            if(isset($_SESSION['id']))
+            {
+                $userController->deleteUser($_GET['id']);
+            }
+            // Sinon, renvoi-le l'accueil, c'est un imposteur.
+            else
+            {
+                header('Location: index.php');
+            }
         }
-
-
 
 
 
@@ -112,36 +146,54 @@ try {
 
         elseif ($_GET['action'] == 'competence')
         {
-            if($_GET['order'] == 'formCreate')
-            {
-                include ("View/Backend/form_CreateCompetence.php");
-            }
+           if(isset($_SESSION['id']))
+           {
+               if($_GET['order'] == 'formCreate')
+               {
+                   include ("View/Backend/form_CreateCompetence.php");
+               }
 
-            elseif($_GET['order'] == 'createCompetence')
-            {
-                $competenceController->createCompetence($_POST);
-            }
+               elseif($_GET['order'] == 'createCompetence')
+               {
+                   if(!empty($_FILES['img']['name']) && !empty($_POST['title']) && !empty($_POST['link']) && !empty($_POST['categorie']))
+                   {
+                       $competenceController->createCompetence($_POST);
+                   }
+                   else
+                   {
+                       // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                       throw new Exception('Vous devez remplir tous les champs.');
+                   }
+               }
 
-            elseif($_GET['order'] == 'formUpdate')
-            {
-                $competenceController->formUpdate($_GET['id']);
-            }
+               elseif($_GET['order'] == 'formUpdate')
+               {
+                   $competenceController->formUpdate($_GET['id']);
+               }
 
-            elseif($_GET['order'] == 'updateCompetence')
-            {
-                $competenceController->update();
-            }
-            elseif($_GET['order'] == 'delete')
-            {
-                $competenceController->delete($_GET['id']);
-            }
-            else
-            {
-                echo'jai rien';
-            }
+               elseif($_GET['order'] == 'updateCompetence')
+               {
+                   if(!empty($_FILES['img']['name']) && !empty($_POST['title']) && !empty($_POST['link']) && !empty($_POST['categorie']))
+                   {
+                       $competenceController->update();
+                   }
+                   else
+                   {
+                       // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                       throw new Exception('Vous devez remplir tous les champs');
+                   }
+               }
+               elseif($_GET['order'] == 'delete')
+               {
+                   $competenceController->delete($_GET['id']);
+               }
+           }
+           else
+           {
+               header('Location: index.php');
+           }
 
         }
-
 
 
         /**
@@ -153,32 +205,57 @@ try {
 
         elseif ($_GET['action'] == 'parcour')
         {
-            if($_GET['order'] == 'formCreate')
+            // Ici je dois vérifier si la personne qui fait l'action est connecté.
+            if(isset($_SESSION['id']))
             {
-                include ("View/Backend/form_CreateParcours.php");
-            }
+                if($_GET['order'] == 'formCreate')
+                {
+                    include ("View/Backend/form_CreateParcours.php");
+                }
 
-            elseif($_GET['order'] == 'createParcour')
-            {
-                $parcourController->createParcour($_POST);
-            }
+                elseif($_GET['order'] == 'createParcour')
+                {
+                    // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
 
-            elseif($_GET['order'] == 'formUpdate')
-            {
-                $parcourController->formUpdate($_GET['id']);
-            }
+                    if (!empty($_FILES['img']['name']) && !empty($_POST['title']) && !empty($_POST['link']))
+                    {
+                        $parcourController->createParcour($_POST);
+                    }
+                    else
+                    {
+                        // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                        throw new Exception('Vous devez tous les champs obligatoires');
+                    }
 
-            elseif($_GET['order'] == 'update')
-            {
-                $parcourController->update();
-            }
-            elseif($_GET['order'] == 'delete')
-            {
-                $parcourController->delete($_GET['id']);
+                }
+
+                elseif($_GET['order'] == 'formUpdate')
+                {
+                    $parcourController->formUpdate($_GET['id']);
+                }
+
+                elseif($_GET['order'] == 'update')
+                {
+                    // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
+                    if (!empty($_FILES['img']['name']) && !empty($_POST['title']) && !empty($_POST['link']))
+                    {
+                        $parcourController->update();
+                    }
+                    else
+                    {
+                        // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                        throw new Exception('Vous devez remplir tous les champs');
+                    }
+
+                }
+                elseif($_GET['order'] == 'delete')
+                {
+                    $parcourController->delete($_GET['id']);
+                }
             }
             else
             {
-                echo'jai rien';
+                header('Location: index.php');
             }
         }
 
@@ -192,35 +269,56 @@ try {
 
         elseif ($_GET['action'] == 'realisation')
         {
-            if($_GET['order'] == 'formCreate')
-            {
-                include ("View/Backend/form_CreateRealisation.php");
-            }
 
-            elseif($_GET['order'] == 'createRealisation')
+            // Ici, je dois vérifier si la personne qui fait l'action est connectée. sinon c'est un imposteur.
+            if(isset($_SESSION['id']))
             {
-                $realisationController->createRealisation($_POST);
-            }
+                if($_GET['order'] == 'formCreate')
+                {
+                    include ("View/Backend/form_CreateRealisation.php");
+                }
 
-            elseif($_GET['order'] == 'formUpdate')
-            {
-                $realisationController->formUpdate($_GET['id']);
-            }
+                elseif($_GET['order'] == 'createRealisation')
+                {
+                    // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
+                    if (!empty($_FILES['img']['name']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['link_view']) && !empty($_POST['link_git']))
+                    {
+                        $realisationController->createRealisation($_POST);
+                    }
+                    else
+                    {
+                        // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                        throw new Exception('Vous devez remplir tous les champs');
+                    }
+                }
 
-            elseif($_GET['order'] == 'update')
-            {
-                $realisationController->update();
+                elseif($_GET['order'] == 'formUpdate')
+                {
+                    $realisationController->formUpdate($_GET['id']);
+                }
+
+                elseif($_GET['order'] == 'update')
+                {
+                    // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
+                    if (!empty($_FILES['img']['name']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['link_view']) && !empty($_POST['link_git']))
+                    {
+                        $realisationController->update();
+                    }
+                    else
+                    {
+                        // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                        throw new Exception('Vous devez remplir tous les champs');
+                    }
+                }
+                elseif($_GET['order'] == 'delete') {
+                    $realisationController->delete($_GET['id']);
+                }
             }
-            elseif($_GET['order'] == 'delete')
+            else // Je le recompagne à la porte, cet imposteur.
             {
-                $realisationController->delete($_GET['id']);
-            }
-            else
-            {
-                echo'jai rien';
+                header('Location: index.php');
             }
         }
-
 
 
         /**
@@ -232,35 +330,57 @@ try {
 
         elseif ($_GET['action'] == 'menu')
         {
-            if($_GET['order'] == 'formCreate')
+            // Ici, je dois vérifier si la personne qui fait l'action est connectée
+            if(isset($_SESSION['id']))
             {
-                include ("View/Backend/form_CreateMenu.php");
-            }
+                if($_GET['order'] == 'formCreate')
+                {
+                    include ("View/Backend/form_CreateMenu.php");
+                }
 
-            elseif($_GET['order'] == 'createMenu')
-            {
-                $menuController->createMenu($_POST);
-            }
+                elseif($_GET['order'] == 'createMenu')
+                {
+                    // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
+                    if (!empty($_POST['title']))
+                    {
+                        $menuController->createMenu($_POST);
+                    }
+                    else
+                    {
+                        // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                        throw new Exception('Vous devez remplir le titre du menu');
+                    }
+                }
 
-            elseif($_GET['order'] == 'formUpdate')
-            {
-                $menuController->formUpdate($_GET['id']);
-            }
+                elseif($_GET['order'] == 'formUpdate')
+                {
+                    $menuController->formUpdate($_GET['id']);
+                }
 
-            elseif($_GET['order'] == 'update')
-            {
-                $menuController->update();
-            }
-            elseif($_GET['order'] == 'delete')
-            {
-                $menuController->delete($_GET['id']);
+                elseif($_GET['order'] == 'update')
+                {
+                    // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
+                    if (!empty($_POST['title']))
+                    {
+                        $menuController->update();
+                    }
+                    else
+                    {
+                        // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                        throw new Exception('Le titre du menu ne doit pas être vide!');
+                    }
+
+                }
+                elseif($_GET['order'] == 'delete')
+                {
+                    $menuController->delete($_GET['id']);
+                }
             }
             else
             {
-                echo'jai rien';
+                header('Location: index.php');
             }
         }
-
 
 
 
@@ -271,56 +391,85 @@ try {
 
         elseif ($_GET['action'] == 'certificat')
         {
-            if($_GET['order'] == 'formCreate')
+            // Ici, je dois vérifier si la personne qui fait l'action est connectée
+            if(isset($_SESSION['id']))
             {
-                // Je dois créer et appeller une fonction qui permet de :
-                // récupérer la categorie ($menu->getTitle)
-                //et qui l'affiche.
-                $controller->formCreateCertificat();
+                if($_GET['order'] == 'formCreate')
+                {
+                    $controller->formCreateCertificat();
+                }
+
+                elseif($_GET['order'] == 'createCertificat')
+                {
+                    // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
+
+                    if(!empty($_POST['title']) && !empty($_POST['cat']) && !empty($_FILES['img']['name']))
+                    {
+                        $certificatController->createCertificat($_POST);
+                    }
+                    else
+                    {
+                        // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                        throw new Exception('Vous devez choisir une image, un titre et une catégorie');
+                    }
+                }
+
+                elseif($_GET['order'] == 'formUpdate')
+                {
+                    $certificatController->formUpdate($_GET['id']);
+                }
+
+                elseif($_GET['order'] == 'update')
+                {
+                    // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
+                    if(!empty($_POST['title']) && !empty($_POST['cat']) && !empty($_FILES['img']['name']))
+                    {
+                        $certificatController->update();
+                    }
+                    else
+                    {
+                        // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                        throw new Exception('Le titre du menu ne doit pas être vide!');
+                    }
+                }
+
+                elseif($_GET['order'] == 'delete')
+                {
+                    // Penser à sécuriser l'action de suppression
+                    $certificatController->delete($_GET['id']);
+                }
+
+                elseif($_GET['order'] == 'readAll')
+                {
+                    $controller->home();
+                }
+
+                elseif($_GET['order'] == 'readCat')
+                {
+                    $controller->HomeReadCat($_GET['cat']);
+                }
+                elseif($_GET['order'] == 'read')
+                {
+                    $certificatController->read($_GET['id']);
+                }
             }
-
-            elseif($_GET['order'] == 'createCertificat')
-            {
-                $certificatController->createCertificat($_POST);
-            }
-
-            elseif($_GET['order'] == 'formUpdate')
-            {
-                $certificatController->formUpdate($_GET['id']);
-            }
-
-            elseif($_GET['order'] == 'update')
-            {
-                $certificatController->update();
-            }
-
-            elseif($_GET['order'] == 'read')
-            {
-                $certificatController->read($_GET['id']);
-            }
-            elseif($_GET['order'] == 'delete')
-            {
-                $certificatController->delete($_GET['id']);
-            }
-
-            elseif($_GET['order'] == 'readAll')
-            {
-                $controller->home();
-            }
-
-            elseif($_GET['order'] == 'readCat')
-            {
-                $controller->HomeReadCat($_GET['cat']);
-
-            }
-
-
             else
             {
-                echo'jai rien';
+                 if($_GET['order'] == 'readAll')
+                 {
+                     $controller->home();
+                 }
+
+                 elseif($_GET['order'] == 'readCat')
+                 {
+                    $controller->HomeReadCat($_GET['cat']);
+                 }
+                 elseif($_GET['order'] == 'read')
+                 {
+                     $certificatController->read($_GET['id']);
+                 }
             }
         }
-
 
         else
         {

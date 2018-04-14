@@ -41,7 +41,7 @@ class CertificatController
         $saveIsOk = $certificatManager->save($certificat);
 
         if($saveIsOk){
-            $message = 'Competence bien ajouté';
+            $message = 'Certificat bien ajouté';
 
         } else{
             $message = 'erreur survenu. Action non effectué';

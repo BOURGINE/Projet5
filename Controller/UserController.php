@@ -16,15 +16,19 @@ class UserController
     // c'est l'inscription
     public function createUser($contenu)
     {
+
         // Les vérifications on été faites on auniveau du routeur avant d'appeler ma fonction.
         // Je hache ensuite le mot de passe.
 
         $pass_hache = password_hash($contenu['pass'], PASSWORD_DEFAULT);
 
+
+
         $user = new user();
         $user->setPseudo($contenu['pseudo']); // Regarder la vidéo sur les méthodes chainées
         $user->setPass($pass_hache);
         $user->setConfirmPass($pass_hache);
+        $user->setRole($contenu['role']);
 
         //envoi des informations à la db via la fonction save du manager
         $userManager = new UserManager;

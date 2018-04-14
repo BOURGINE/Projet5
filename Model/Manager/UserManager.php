@@ -148,10 +148,6 @@ class UserManager extends Connex_Db
             $_SESSION['pseudo'] = $resultat['pseudo'];
             $_SESSION['role'] = $resultat['role'];
         }
-        else
-        {
-            $message='identifiant mot de passe incorrect';
-        }
 
      }
 

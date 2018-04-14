@@ -127,9 +127,8 @@ class Controller
         }
         else
         {
-            // redirigera vers le formulaire de connexion avec
-            // le FAMEUX message mot de passe incorrecte.
-            header('Location: index.php');
+            $this->formConnexion();
+            echo "<script>alert(\"Identifiant ou Mot de passe incorrect\")</script>";
         }
     }
 

@@ -147,6 +147,7 @@ class ParcourController
     }
 
 
+
     public function delete($recupPost)
     {
         $parcourManager = new ParcourManager();
@@ -154,10 +155,10 @@ class ParcourController
         $deleteIsOk = $parcourManager->delete($recupPost);
 
         if($deleteIsOk){
-            $message = 'La compétence été bien supprimé';
+            $message = 'Le parcours été bien supprimé';
         }else
         {
-            $message = 'Une erreur est arrivée. Impossible de supprimer cette compétence';
+            $message = 'Une erreur est arrivée. Impossible de supprimer ce parcours';
         }
         //NB: il faut que je retroune le réslutat en HTML
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
