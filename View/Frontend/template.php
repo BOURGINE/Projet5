@@ -12,7 +12,20 @@ if (isset($_SESSION['pseudo']))
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- Opengraph pour Facebook -->
+    <meta property="og:title" content="Bourgine B. FAGADE"/>
+    <meta property="og:type" content="portfolio"/>
+    <meta property="og:url" content="http://p5.bourgine-fagade.com"/>
+    <meta property="og:image" content="Public/images/auteur.jpg"/>
+    <meta property="og:description" content=" portfolio Bourgine Bérenger FAGADE"/>
+    <!-- Opengraph pour Twitter -->
+    <meta name="twitter:card" content="Bourgine B. FAGADE"/>
+    <meta name="twitter:site" content="portfolio"/>
+    <meta name="twitter:title" content="http://p5.bourgine-fagade.com"/>
+    <meta name="twitter:description" content="portfolio Bourgine Bérenger FAGADE"/>
+    <meta name="twitter:image" content="Public/images/auteur.jpg"/>
 
     <link rel="stylesheet" href="Public/css/style.css" />
     <link rel="stylesheet" href="Public/css/main.css" />

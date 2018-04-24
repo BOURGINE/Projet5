@@ -69,7 +69,7 @@ class Controller
         $certificats = $certificatManager->readAll();
 
         // On affiche ensuite le résultat en HTML en appellant ma vue depuis mon controlleur-ci.
-        include(__DIR__ . "/../View/FrontEnd/home.php");
+        include(__DIR__ . "/../View/Frontend/home.php");
     }
 
     public function HomeReadCat($cat)
@@ -96,7 +96,7 @@ class Controller
         //Certificat
         $certificatManager = new CertificatManager();
         $certificats = $certificatManager->readCat($cat);
-        include(__DIR__ . "/../View/FrontEnd/home.php");
+        include(__DIR__ . "/../View/Frontend/home.php");
     }
 
 
@@ -106,7 +106,7 @@ class Controller
 
     public function formConnexion()
     {
-        include(__DIR__."/../View/FrontEnd/form_connexion.php");
+        include(__DIR__ . "/../View/Frontend/form_connexion.php");
     }
 
     public function formCreateUser()

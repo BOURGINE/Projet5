@@ -21,7 +21,7 @@
         </p>
 
         <p>
-            <label for="content"> Contenu</label>
+            <label for="content"> Contenu </label>
             <textarea name="content" form="form_UpdateRealisation" cols="100" rows="10" class="tinymce"> <?=$realisation->getContent();?></textarea>
 
         </p>
@@ -36,12 +36,12 @@
             <input type="url" id="title" name="link_git" value="<?=$realisation->getLinkGit();?>">
         </p>
         <p>
-            <input type="submit" value="Modifier Parcours">
+            <input type="submit" value="Modifier Realisation">
         </p>
     </form>
 
 </div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('../Projet5/View/FrontEnd/template.php'); ?>
+<?php require('../Projet5/View/Frontend/template.php'); ?>
 

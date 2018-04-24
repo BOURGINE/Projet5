@@ -38,11 +38,11 @@ include('../Projet5/View/Frontend/header.php');
         <!--BLOCK FRONT-END-->
         <div class="competence_enfant">
             <div class="ordinateur">
-                <p><img src="Public/images/frontend.jpg" alt="ordinateur" style="text-align: center; width: 100%;"></p>
+                <p><img src="Public/images/frontend.jpg" alt="frontend" style="text-align: center; width: 100%;"></p>
             </div>
-            <div class="titre_h1"><h1>FRONTEND</h1></div>
+            <div class="titre_h1"><h3>FRONTEND</h3></div>
 
-            <div id="bloc_list">
+            <div class="bloc_list">
                 <?php if(empty($frontCompetences)):?>
                     <p> il n'y a aucune competences  </p>
 
@@ -56,12 +56,12 @@ include('../Projet5/View/Frontend/header.php');
                             <!-- POUR CHAQUE COMPETENCES Front-->
                             <div class="section_liste">
                                 <div class="div_icone">
-                                    <img src="Public/images/<?= $competence->getImg();?>"/><!-- Image en php ici-->
+                                    <img src="Public/images/<?= $competence->getImg();?>" alt=" bourgine fagade competences"/><!-- Image en php ici-->
                                 </div>
                                 <div class="div_texte">
                                     <p><strong> <?= $competence->getTitle();?> </strong></p>
                                     <p> <?= $competence->getContent();?></p>
-                                    <a href="<?= $competence->getLink();?>"><button>Certificats</button></a>
+                                   <a href="<?= $competence->getLink();?>"> <div class="button"> Certificats </div> </a>
                                 </div>
                             </div>
                             <?php endforeach; ?>
@@ -74,11 +74,11 @@ include('../Projet5/View/Frontend/header.php');
         <!--BLOCK BACKEND-->
         <div class="competence_enfant">
             <div class="ordinateur">
-                <p><img src="Public/images/backend.jpg" alt="ordinateur" style="text-align: center; width: 100%;"></p>
+                <p><img src="Public/images/backend.jpg" alt="backend" style="text-align: center; width: 100%;"></p>
             </div>
-            <div class="titre_h1"><h1>BACKEND</h1></div>
+            <div class="titre_h1"><h3>BACKEND</h3></div>
 
-            <div id="bloc_list">
+            <div class="bloc_list">
 
                 <!-- POUR CHAQUE COMPETENCES de type back-->
                 <div id="bloc_list">
@@ -95,12 +95,12 @@ include('../Projet5/View/Frontend/header.php');
                                 <!-- POUR CHAQUE COMPETENCES Front-->
                                 <div class="section_liste">
                                     <div class="div_icone">
-                                        <img src="Public/images/<?= $competence->getImg();?>"/><!-- Image en php-->
+                                        <img src="Public/images/<?= $competence->getImg();?>" alt=" bourgine fagade competences"/><!-- Image en php-->
                                     </div>
                                     <div class="div_texte">
                                         <p><strong> <?= $competence->getTitle();?> </strong></p>
                                         <p> <?= $competence->getContent();?></p>
-                                        <a href="<?= $competence->getLink();?>"><button>Certificats</button></a>
+                                        <a href="<?= $competence->getLink();?>"> <div class="button"> Certificats </div> </a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -139,13 +139,13 @@ include('../Projet5/View/Frontend/header.php');
                          <article class="4u 12u(mobile) special">
 
                              <div class="image featured">
-                                 <img  class="parcours" src="Public/images/<?= $parcour->getImg();?>"/> <!-- img en php/ manque la direction vers le dossier de l'image-->
+                                 <img  class="parcours" src="Public/images/<?= $parcour->getImg();?>" alt="parcours"/> <!-- img en php/ manque la direction vers le dossier de l'image-->
                              </div>
                              <header>
                                  <h3><?= $parcour->getTitle();?></h3> <!-- title en php -->
                              </header>
                              <p><?= $parcour->getContent();?></p>
-                             <a href="<?= $parcour->getLink();?>"><button>Voir</button></a>
+                             <a href="<?= $parcour->getLink();?>"><div class="button">Voir</div></a>
                          </article>
 
                     <?php endforeach; ?>
@@ -184,14 +184,14 @@ include('../Projet5/View/Frontend/header.php');
 
                     <article>
                         <a href="<?= $realisation->getLinkView();?>" id="image_realisation" class="image featured" >
-                            <img class="image" src="Public/images/<?= $realisation->getImg();?>" alt="réalisations" style="width:100%"/>
+                            <img class="image" src="Public/images/<?= $realisation->getImg();?>" alt="bourgine fagade réalisations" style="width:100%"/>
                         </a>
                         <div class="session_content">
                             <header>
                                 <h3><?= $realisation->getTitle();?></h3>
                             </header>
                             <p class="realisationContent"> <?= $realisation->getContent();?> </p>
-                            <a href="<?= $realisation->getLinkView();?>"><button>Vue</button></a> <a href="<?= $realisation->getLinkGit();?>"><button>Github</button></a>
+                            <a href="<?= $realisation->getLinkView();?>"><div class="button">Vue</div></a> <a href="<?= $realisation->getLinkGit();?>"><div class="button">Github</div></a>
                         </div>
                     </article>
 

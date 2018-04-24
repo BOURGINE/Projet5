@@ -11,6 +11,11 @@ header h2
     text-align: center;
 }
 
+a
+{
+    text-decoration: none;
+}
+
 .page_form
 {
     margin-left: 15px;
@@ -194,7 +199,7 @@ h1
     margin-left: auto;
 }
 
-#bloc_list
+.bloc_list
 {
     width: 100%;
     display: block;
@@ -299,7 +304,6 @@ h2
     height: 250px;
 }
 
-
 /*-------------------------------------------------
 			       REALISATIONS
  ------------------------------------------------*/
@@ -330,6 +334,17 @@ article:hover #image_realisation
     -moz-transition: display 5s;
 }
 
+/*-------------------------------------------------
+	 GESTION DES BOUTTONS  et LIENS BOUTTONS
+ ------------------------------------------------*/
+.button a
+{
+    display: block;
+}
+.button a:hover
+{
+    color: white !important;
+}
 
 /*-------------------------------------------------
 			       BACK OFFICE

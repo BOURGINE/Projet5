@@ -1,9 +1,9 @@
-<?php $title = 'Modifier Competences'; ?>
+<?php $title = 'Modifier Competence'; ?>
 
 <?php ob_start(); ?>
 
 <div class="page_form">
-    <h1> Modifier competences</h1>
+    <h1> Modifier Competence</h1>
 
     <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINIST </a></p>
 
@@ -21,7 +21,7 @@
         </p>
 
         <p>
-            <label for="content"> Contenu </label>
+            <label for="content"> Contenu (Pas obligatoire. Sauf pour conformité) </label>
             <textarea name="content" form="form_CreateCompetence" cols="100" rows="10" class="tinymce"> <?=$competence->getContent();?></textarea>
         </p>
 
@@ -41,5 +41,5 @@
 </div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('../Projet5/View/FrontEnd/template.php'); ?>
+<?php require('../Projet5/View/Frontend/template.php'); ?>
 

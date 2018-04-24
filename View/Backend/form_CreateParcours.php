@@ -21,7 +21,7 @@
         </p>
 
         <p>
-            <label for="content"> Contenu </label>
+            <label for="content"> Contenu (Pas obligatoire. Sauf pour conformité) </label>
             <textarea name="content" form="form_CreateCompetence" cols="100" rows="10" class="tinymce"> </textarea>
         </p>
 
@@ -31,12 +31,12 @@
         </p>
 
         <p>
-            <input type="submit" value="Ajouter un parcour">
+            <input type="submit" value="Ajouter un parcours">
         </p>
     </form>
 
 </div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('../Projet5/View/FrontEnd/template.php'); ?>
+<?php require('../Projet5/View/Frontend/template.php'); ?>
 

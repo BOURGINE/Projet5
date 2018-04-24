@@ -10,8 +10,10 @@
 
     <div>
         <h1> BACKOFFICE</h1>
-        <a href="index.php"><button>ACCEUIL</button></a>
-        <a href="index.php?action=deconnexion"><button>DECONNEXION</button></a>
+
+        <a href="index.php"> <div class="button">ACCUEIL</div> </a>
+
+        <a href="index.php?action=deconnexion"> <div class="button">DECONNEXION</div> </a>
     </div>
 
 

@@ -12,4 +12,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('../Projet5/View/FrontEnd/template.php'); ?>
+<?php require('../Projet5/View/Frontend/template.php'); ?>

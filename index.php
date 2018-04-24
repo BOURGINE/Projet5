@@ -59,6 +59,12 @@ try {
            $controller->formConnexion();
         }
 
+        elseif ($_GET['action'] == 'index.php')
+        {
+            header('Location: index.php');
+        }
+
+
         elseif ($_GET['action'] == 'code4liokoConnexion')
         {
             if(isset($_SESSION['id']))
