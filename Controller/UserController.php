@@ -24,9 +24,8 @@ class UserController
 
 
         $user = new user();
-        $user->setPseudo($contenu['pseudo']); // Regarder la vidéo sur les méthodes chainées
+        $user->setPseudo($contenu['pseudo']);
         $user->setPass($pass_hache);
-        $user->setConfirmPass($pass_hache);
         $user->setRole($contenu['role']);
 
         //envoi des informations à la db via la fonction save du manager

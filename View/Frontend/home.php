@@ -229,7 +229,7 @@ include('../Projet5/View/Frontend/header.php');
                 <?php else:?>
                     <ul>
                         <li class="category_item" id="all">
-                            <a href="#certificat">ALLL</a>
+                            <a href="#certificat"> TOUS </a>
                         </li>
                         <?php foreach ($menus as $menu):?>
                             <li class="category_item" id="<?=$menu->getTitle();?>">
@@ -237,7 +237,6 @@ include('../Projet5/View/Frontend/header.php');
                             </li>
                         <?php endforeach; ?>
                     </ul>
-
                 <?php endif;?>
             <?php endif;?>
         </nav>
@@ -254,11 +253,10 @@ include('../Projet5/View/Frontend/header.php');
             <?php if($certificats === false):?>
                 <p> Une erreur vient de se produire</p>
             <?php else:?>
-
-                    <?php foreach ($certificats as $certificat):?>
-                        <!-- Pj1  NB: ici il faudra gérer la class block_container ou element en CSS-->
-                            <!-- Pj1  NB: ici l'image avait comme class image-->
-                            <img src="Public/images/<?=$certificat->getImg()?>" alt="certificat" class="element_item <?=$certificat->getCat()?>"/>
+                <?php foreach ($certificats as $certificat):?>
+                    <!-- Pj1  NB: ici il faudra gérer la class block_container ou element en CSS-->
+                    <!-- Pj1  NB: ici l'image avait comme class image-->
+                    <img src="Public/images/<?=$certificat->getImg()?>" alt="certificat" class="element_item <?=$certificat->getCat()?>"/>
                 <?php endforeach; ?>
 
             <?php endif;?>
@@ -298,19 +296,47 @@ include('../Projet5/View/Frontend/header.php');
             </section>
 
             <!-- Form de contact -->
+            <section class="4u 12u(mobile)">
+                <header>
+                    <h2 class="icon fa-file circled"><span class="label">Posts</span></h2>
+                </header>
+
+                <form method="POST" action="index.php">
+
+                        <span class="error"></span>
+                        <input type="text" name="nom" id="nom" placeholder="Nom et prenom"/> <br/>
+
+                        <span class="error"></span>
+                        <input type="email" name="mail" id="mail" placeholder="Courriel" /> <br/>
+
+                        <span class="error"></span>
+                        <input type="text" name="subject" id="subject" placeholder="Sujet" /> <br/>
+
+                        <span class="error"></span>
+                        <textarea name="content" id="message" placeholder="Message" rows="4" cols="30"></textarea> <br/>
+
+                        <input type="submit" value="Envoyer" id="submit" />
+                </form>
+            </section>
+
             <section>
 
                 <header>
                     <h2 class="icon fa-building"><span class="label">Posts</span></h2>
                 </header>
 
-                <div>
-                    <p> <strong style="color: white;">FAGADE Bourgine Bérenger</strong> <br> 11 A Rue Léon Blum 68100 Mulhouse<br>Tel 06 52 26 64 37
-                    </p>
-                </div>
+                <ul class="divided">
+                    <li>
+                        <article class="post stub">
+                           <div>
+                               <p> <strong style="color: white;">FAGADE Bourgine Bérenger</strong> <br> 11 A Rue Léon Blum 68100 Mulhouse<br>Tel 06 52 26 64 37
+                               </p>
+                           </div>
+                        </article>
+                    </li>
+                </ul>
+
             </section>
-
-
         </div>
         <hr />
 
@@ -320,15 +346,14 @@ include('../Projet5/View/Frontend/header.php');
                 <!-- RESEAUX SOCIAUX -->
                 <section class="contact">
                     <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <li><a href="#" class="icon fa-github"><span class="label">Instagram</span></a></li>
+                        <li><a href="https://www.linkedin.com/in/bourginefagade/" target="_blank" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+                        <li><a href="https://github.com/BOURGINE/" target="_blank" class="icon fa-github"><span class="label">Github</span></a></li>
                     </ul>
                 </section>
                 <!-- Copyright -->
                 <div class="copyright">
                     <p class="menu" style="text-align: center;">
-                        &copy; 2018. Tout droit réservé.  Bourgine Bérenger FAGADE
+                        &copy; Thème Helios - Modifié et adpaté par Bourgine Bérenger FAGADE
                     </p>
                 </div>
             </div>

@@ -22,6 +22,7 @@ a
     margin-right: 15px;
 }
 
+
 /*-----------------------------------------------
  	 NOS PROJETS - certificats - MENU
  ---------------------------------------------*/
@@ -429,6 +430,20 @@ article:hover .image_realisation
 {
     color: white !important;
 }
+
+
+/*-------------------------------------------------
+	 GESTION DES BOUTTONS  et LIENS BOUTTONS
+ ------------------------------------------------*/
+.error
+{
+    border:1px solid #000;
+    background-color: #999;
+    text-align: center;
+    font-size: 20px;
+    display: none;
+}
+
 
 /*-------------------------------------------------
 			       BACK OFFICE

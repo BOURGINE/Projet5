@@ -24,6 +24,9 @@ use Projet5\Model\Manager\CertificatManager;
 use Projet5\Model\Entity\User;
 use Projet5\Model\Manager\UserManager;
 
+use Projet5\Model\Entity\Message;
+use Projet5\Model\Manager\MessageManager;
+
 // Ici c'est la déclaration de Class. C'est ce que je dois gérer avec un autloader
 $controller = new Projet5\Controller\Controller();
 
@@ -45,11 +48,13 @@ $certificatController = new Projet5\Controller\CertificatController();
 $user = new Projet5\Model\Entity\User();
 $userController = new Projet5\Controller\UserController();
 
+$message = new Projet5\Model\Entity\Message();
+$messageController = new Projet5\Controller\MessageController();
+
 try {
 
     if (isset($_GET['action'])) // si une action est effectué par l'utilisateur
     {
-
         /**
          * CONNEXION AU BACK OFFICE
          **/
@@ -67,6 +72,8 @@ try {
 
         elseif ($_GET['action'] == 'code4liokoConnexion')
         {
+            // ATTENTION VERIFIER SI LE FORMULAIRE N'EST PAS VIDE EN JS
+
             if(isset($_SESSION['id']))
             {
                 $controller->admin();
@@ -112,13 +119,22 @@ try {
             if(isset($_SESSION['id']))
             {
                 // Ici je dois vérifier formulaire n'est pas vide avant d'appeller la fonction
-                if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['confirmPass']) && ($_POST['pass']) == ($_POST['confirmPass']))
+                if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['confirmPass']))
                 {
-                    $userController->createUser($_POST);
+                    // Je rentre dans la fonction. Mais je dois vérifier si le pass et le confirmPass sont identiques
+
+                    if(($_POST['pass'])===($_POST['confirmPass']))
+                    {
+                        $userController->createUser($_POST);
+                    }
+                    else
+                    {
+                        throw new Exception('Les mot de passe ne sont pas identiques.');
+                    }
                 }
                else
                {
-                   throw new Exception('Vous devez remplir tous les champs. Assurez-vous que le mot de passe soit identique');
+                   throw new Exception('Vous devez remplir tous les champs.');
                }
             }
 
@@ -475,6 +491,23 @@ try {
                  }
             }
         }
+
+
+        /**
+         * GESTION DES MESSAGES (FORMULAIRE DE CONTACT)
+         **/
+
+        elseif ($_GET['action'] == 'traitement')
+        {
+            // PLUTOT GERER EN JS.
+            // Faire vérification côté serveur
+            if(!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['subject']) && !empty($_POST['content']))
+            {
+                $messageController->createMessage($_POST);
+            }
+        }
+
+
 
         else
         {

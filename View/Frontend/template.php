@@ -44,6 +44,7 @@ if (isset($_SESSION['pseudo']))
 <script src="Public/js/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="Public/js/filter.js"></script>
+<script src="Public/js/formulaire.js"></script>
 
 <script src="Public/js/jquery.dropotron.min.js"></script>
 <script src="Public/js/jquery.scrolly.min.js"></script>

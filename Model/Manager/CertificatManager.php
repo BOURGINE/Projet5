@@ -102,7 +102,6 @@ class CertificatManager extends Connex_Db
      * Cette fonction lira toutes les certificats en fonction des categories
      **/
 
-
     public function readCat($cat)
     {
         $this->pdoStatement=$this->pdo->prepare('SELECT * FROM certificat WHERE cat=:cat');
@@ -145,7 +144,7 @@ class CertificatManager extends Connex_Db
     }
 
     /**
-     * Supprime Post à partir de son Id.
+     * Supprime Certificat à partir de son Id.
      **/
 
     public function delete($id)

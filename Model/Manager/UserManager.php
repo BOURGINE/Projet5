@@ -17,19 +17,18 @@ class UserManager extends Connex_Db
     private $pdoStatement;
 
     /**
-     *
+     * Cette fonction permet de créer un utilisateur
      **/
 
     public function create(User &$user)
     {
         //Préparation de la req
         //je lie pdoStatement à pdo car je fais une req préparée
-        $this->pdoStatement=$this->pdo->prepare('INSERT INTO myuser VALUES(NULL, :pseudo, :pass, :confirmPass, :role)');
+        $this->pdoStatement=$this->pdo->prepare('INSERT INTO myuser VALUES(NULL, :pseudo, :pass, :role)');
 
         //liaison des paramettres : Liaison des name du formulaire aux champs de la table post
         $this->pdoStatement->bindValue(':pseudo', $user->getPseudo(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':pass', $user->getPass(), PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':confirmPass', $user->getConfirmPass(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':role', $user->getRole(), PDO::PARAM_STR);
         //Exécution de la req
         $executeIsOk = $this->pdoStatement->execute();

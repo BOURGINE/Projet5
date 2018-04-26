@@ -292,6 +292,47 @@
     </div>
 </div>
 
+
+<!-- ****************************************
+       MESSAGE (FORMULAIRE DE CONTACT
+******************************************-->
+    <div class="section_articles">
+
+        <!-- Titre -->
+        <div class="entete_session" id="entete_message">
+            <a href="#corps_menu">  <h3> MENU </h3> </a>
+        </div>
+
+        <!-- Corps -->
+        <div class="corps_session" id="corps_message">
+            <?php if(empty($menus)):?>
+                <p> il n'y a aucun message</p>
+            <?php else:?>
+
+                <?php if($menus === false):?>
+                    <p> Une erreur vient de se produire</p>
+                <?php else:?>
+
+                    <table>
+                        <tr>
+                            <th> Titre </th>
+                            <th colspan="2"> ACTIONS </th>
+                        </tr>
+
+                        <?php foreach ($menus as $menu):?>
+                            <tr>
+                                <td> <?= $menu->getTitle();?>  </td>
+                                <td> <a href="index.php?action=menu&order=formUpdate&id=<?= $menu->getId();?>"> MODIFIER</a> </td>
+                                <td> <a href="index.php?action=menu&order=delete&id=<?= $menu->getId();?>"> SUPPRIMER</a> </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+
+                <?php endif;?>
+            <?php endif;?>
+            <h4> <a href="index.php?action=menu&order=formCreate" style="color: darkred"> Ajouter MENU </a></h4>
+        </div>
+    </div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('../Projet5/View/Frontend/template.php'); ?>
