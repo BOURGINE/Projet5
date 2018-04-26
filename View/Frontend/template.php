@@ -4,7 +4,6 @@ if (isset($_SESSION['pseudo']))
     //Affiche les infos de la session
     $info1 = '';
 }
-
 ?>
 
 <!DOCTYPE HTML>
@@ -27,10 +26,12 @@ if (isset($_SESSION['pseudo']))
     <meta name="twitter:description" content="portfolio Bourgine Bérenger FAGADE"/>
     <meta name="twitter:image" content="Public/images/auteur.jpg"/>
 
+    <link rel="shortcut icon" type="image/x-icon" href="Public/images/icone.png" />
     <link rel="stylesheet" href="Public/css/style.css" />
     <link rel="stylesheet" href="Public/css/main.css" />
     <!--[if lte IE 8]> <link rel="stylesheet" href="Public/css/ie8.css" /><![endif]-->
     <title> <?= $title ?></title>
+
 </head>
 
 <body class="homepage">
@@ -41,6 +42,9 @@ if (isset($_SESSION['pseudo']))
 
 <!-- Scripts -->
 <script src="Public/js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="Public/js/filter.js"></script>
+
 <script src="Public/js/jquery.dropotron.min.js"></script>
 <script src="Public/js/jquery.scrolly.min.js"></script>
 <script src="Public/js/jquery.onvisible.min.js"></script>

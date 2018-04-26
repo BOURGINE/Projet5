@@ -70,7 +70,7 @@ class CertificatController
                 // Testons si l'extension est autorisée
                 $infosfichier = pathinfo($_FILES['img']['name']);
                 $extension_upload = $infosfichier['extension'];
-                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png','pdf');
+                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png', 'pdf');
                 if (in_array($extension_upload, $extensions_autorisees))
                 {
                     // On peut valider le fichier et le stocker définitivement

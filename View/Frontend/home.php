@@ -1,4 +1,4 @@
-<?php $title = 'Accueil'; ?>
+<?php $title = 'Bourgine B. FAGADE'; ?>
 
 <?php ob_start(); ?>
 <!--**************************
@@ -61,7 +61,7 @@ include('../Projet5/View/Frontend/header.php');
                                 <div class="div_texte">
                                     <p><strong> <?= $competence->getTitle();?> </strong></p>
                                     <p> <?= $competence->getContent();?></p>
-                                   <a href="<?= $competence->getLink();?>"> <div class="button"> Certificats </div> </a>
+                                   <a href="<?= $competence->getLink();?>"> <div class="button">Certificats</div> </a>
                                 </div>
                             </div>
                             <?php endforeach; ?>
@@ -100,7 +100,7 @@ include('../Projet5/View/Frontend/header.php');
                                     <div class="div_texte">
                                         <p><strong> <?= $competence->getTitle();?> </strong></p>
                                         <p> <?= $competence->getContent();?></p>
-                                        <a href="<?= $competence->getLink();?>"> <div class="button"> Certificats </div> </a>
+                                        <a href="<?= $competence->getLink();?>"> <div class="button">Certificats</div> </a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -139,13 +139,15 @@ include('../Projet5/View/Frontend/header.php');
                          <article class="4u 12u(mobile) special">
 
                              <div class="image featured">
-                                 <img  class="parcours" src="Public/images/<?= $parcour->getImg();?>" alt="parcours"/> <!-- img en php/ manque la direction vers le dossier de l'image-->
+                                 <a href="<?= $parcour->getLink();?>">
+                                     <img  class="parcours" src="Public/images/<?= $parcour->getImg();?>" alt="parcours"/>
+                                     <!-- img en php/ manque la direction vers le dossier de l'image-->
+                                 </a>
                              </div>
                              <header>
                                  <h3><?= $parcour->getTitle();?></h3> <!-- title en php -->
                              </header>
                              <p><?= $parcour->getContent();?></p>
-                             <a href="<?= $parcour->getLink();?>"><div class="button">Voir</div></a>
                          </article>
 
                     <?php endforeach; ?>
@@ -183,7 +185,7 @@ include('../Projet5/View/Frontend/header.php');
         <?php foreach ($realisations as $realisation):?>
 
                     <article>
-                        <a href="<?= $realisation->getLinkView();?>" id="image_realisation" class="image featured" >
+                        <a href="<?= $realisation->getLinkView();?>" class="image_realisation" >
                             <img class="image" src="Public/images/<?= $realisation->getImg();?>" alt="bourgine fagade réalisations" style="width:100%"/>
                         </a>
                         <div class="session_content">
@@ -205,7 +207,9 @@ include('../Projet5/View/Frontend/header.php');
 </section>
 
 <!--*************************************
+
         CERTIFICAT DE REUSSITE
+
 *****************************************-->
         <!-- Certificat -->
 <section id="certificat" class="reel">
@@ -224,12 +228,12 @@ include('../Projet5/View/Frontend/header.php');
 
                 <?php else:?>
                     <ul>
-                        <li>
-                            <a href="index.php?action=certificat&order=readAll#certificat"> ALL</a>
+                        <li class="category_item" id="all">
+                            <a href="#certificat">ALLL</a>
                         </li>
                         <?php foreach ($menus as $menu):?>
-                            <li>
-                                <a href="index.php?action=certificat&order=readCat&cat=<?=$menu->getTitle();?>#certificat"> <?=$menu->getTitle();?></a>
+                            <li class="category_item" id="<?=$menu->getTitle();?>">
+                                <a href="#certificat"> <?=$menu->getTitle();?> </a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -242,6 +246,7 @@ include('../Projet5/View/Frontend/header.php');
     <!-- Nos_projets2 -->
     <aside id="certificat_enfant">
 
+        <div class="block_container">
         <?php if(empty($certificats)):?>
             <p> il n'y a aucun certificat</p>
         <?php else:?>
@@ -251,24 +256,23 @@ include('../Projet5/View/Frontend/header.php');
             <?php else:?>
 
                     <?php foreach ($certificats as $certificat):?>
-                        <!-- Pj1 -->
-                        <div class="element">
-                            <img src="Public/images/<?=$certificat->getImg()?>" alt="certificat" class="image">
-                        </div>
-
+                        <!-- Pj1  NB: ici il faudra gérer la class block_container ou element en CSS-->
+                            <!-- Pj1  NB: ici l'image avait comme class image-->
+                            <img src="Public/images/<?=$certificat->getImg()?>" alt="certificat" class="element_item <?=$certificat->getCat()?>"/>
                 <?php endforeach; ?>
 
             <?php endif;?>
         <?php endif;?>
-
-
+        </div> <!-- Fin block containers -->
     </aside>
 
 </section>
 
 
 <!--*************************************
-	 				CONTACT
+
+	 			CONTACT
+
 *****************************************-->
 <!-- Footer -->
 <div id="footer">
@@ -276,7 +280,6 @@ include('../Projet5/View/Frontend/header.php');
     <div class="container">
 
         <div class="row">
-
 
             <!-- projets github -->
             <section class="4u 12u(mobile)">

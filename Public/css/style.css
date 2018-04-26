@@ -23,7 +23,7 @@ a
 }
 
 /*-----------------------------------------------
- 	 NOS PROJETS - certificats
+ 	 NOS PROJETS - certificats - MENU
  ---------------------------------------------*/
 
 #certificat
@@ -131,14 +131,34 @@ nav ul li
 
 }
 
+/*
+.category_item
+{
+    float: left;
+    width: 20%;
+    background-color: black;
+    text-align: center;
+    padding: 20px 0;
+    cursor: pointer;
+}
+*/
+
+/*-----------------------------------------------
+ 	 certificats - IMAGES
+ ---------------------------------------------*/
 #certificat_enfant
 {
     display: flex;
     flex-wrap: wrap;
     flex-direction:row;
     justify-content: center;
+    border: 10px yellow solid;
 }
 
+/*----------------------------------------
+		 A supprimer?
+-----------------------------------------*/
+/*
 .element
 {
     width: 350px;
@@ -159,6 +179,67 @@ nav ul li
     height: 300px;
     transition: 1s;
 }
+
+*/
+
+/*----------------------------------------
+		 GESTION DE FILTER
+-----------------------------------------*/
+
+.category_container
+{
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.category_item{
+
+    white-space: 20%;
+    background-color: white;
+    padding: 20px O;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    color: black;
+
+}
+
+.category_item:hover
+{
+    color: white;
+    background-color: black;
+}
+
+.block_container
+{
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.element_item
+{
+    box-sizing: border-box;
+    float: left;
+    padding: 2px;
+    width: 300px;
+    transition: all 0.4s ease-in-out;
+    height: 250px;
+    margin:5px;
+
+}
+
+.hide
+{
+    transform: scale(0);
+    width: 0;
+    padding: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+
+
 /*----------------------------------------
 		 COMPETENCES
 -----------------------------------------*/
@@ -242,7 +323,7 @@ h1
 
 .icone
 {
-    color: #2EA3BE;
+    color: #df7366;
     border: 1px solid grey; /*bordure à ne pas éffacer*/
     padding: 10px;
     border-radius: 100%;
@@ -261,7 +342,7 @@ h1
 
 .point1
 {
-    color: #2EA3BE;
+    color: #df7366;
     background-color: white;
     border: 4px solid white; /*bordure à ne pas éffacer*/
     border-radius: 50%;
@@ -278,7 +359,7 @@ h2
 
 .point
 {
-    color: #2EA3BE;
+    color: #df7366;
     border: 4px solid white; /*bordure à ne pas éffacer*/
     border-radius: 100%;
     position: absolute;
@@ -295,6 +376,7 @@ h2
 #parcours
 {
     background-color: white;
+    padding-top: 200px;
 }
 
 
@@ -307,10 +389,10 @@ h2
 /*-------------------------------------------------
 			       REALISATIONS
  ------------------------------------------------*/
-
-#image_realisation
+.image_realisation
 {
     height: 220px;
+    display: block;
 }
 
 .realisationContent
@@ -324,15 +406,17 @@ article:hover .realisationContent
     display: block;
     transition: display 5s;
     -moz-transition: display 5s;
-    height: 220px;
+    height: 210px;
 }
 
-article:hover #image_realisation
+article:hover .image_realisation
 {
     display: none;
     transition: dispay 5s;
     -moz-transition: display 5s;
 }
+
+
 
 /*-------------------------------------------------
 	 GESTION DES BOUTTONS  et LIENS BOUTTONS
@@ -349,7 +433,6 @@ article:hover #image_realisation
 /*-------------------------------------------------
 			       BACK OFFICE
  ------------------------------------------------*/
-
 .section_articles
 {
     border: 3px #5b5b5b solid;
