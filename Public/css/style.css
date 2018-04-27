@@ -448,6 +448,23 @@ article:hover .image_realisation
 /*-------------------------------------------------
 			       BACK OFFICE
  ------------------------------------------------*/
+#bande_profil
+{
+    height:75px;
+    width: 100%;
+    background-color: white;
+    margin-top: -5px;
+    display: flex;
+    align-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+#bande_profil
+{
+    box-sizing: border-box;
+}
+
 .section_articles
 {
     border: 3px #5b5b5b solid;

@@ -12,7 +12,7 @@
         <input type="hidden" id="id" name="id" value="<?=$parcour->getId();?>">
         <p>
             <label for="img"> Image </label>
-            <input type="file" id="tel" name="img" value="<?=$parcour->getImg();?>">
+            <input type="file" id="img" name="img" value="<?=$parcour->getImg();?>">
         </p>
 
         <p>
@@ -22,12 +22,12 @@
 
         <p>
             <label for="content"> Contenu </label>
-            <textarea name="content" form="form_CreateCompetence" cols="100" rows="10" class="tinymce"> <?=$parcour->getContent();?></textarea>
+            <textarea name="content"  id="content" form="form_CreateCompetence" cols="100" rows="10" class="tinymce"> <?=$parcour->getContent();?></textarea>
         </p>
 
         <p>
             <label for="link"> Lien (école)</label>
-            <input type="url" id="title" name="link" value="<?=$parcour->getLink();?>">
+            <input type="url" id="link" name="link" value="<?=$parcour->getLink();?>">
         </p>
 
         <p>

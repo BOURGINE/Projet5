@@ -15,7 +15,7 @@
         <br/> <br/>
 
         <label for="pass"> Votre Mot de Passe: </label>
-        <input type="password" name="pass" id="pseudo" />
+        <input type="password" name="pass" id="pass" />
         <br/> <br/>
 
         <input  id="button" type="submit" value="Connexion" style="text-align:center" />

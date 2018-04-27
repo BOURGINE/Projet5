@@ -11,12 +11,12 @@
 
 
         <p>
-            <label for="img"> Image </label>
-            <input type="file" id="tel" name="img">
+            <label for="img"> Image </label> <span class="error"></span>
+            <input type="file" id="img" name="img">
         </p>
 
         <p>
-            <label for="title"> Titre </label>
+            <label for="title"> Titre </label> <span class="error"></span>
             <input type="text" id="title" name="title">
         </p>
 
@@ -26,8 +26,8 @@
         </p>
 
         <p>
-            <label for="link"> Lien (vers école)</label>
-            <input type="url" id="title" name="link">
+            <label for="link"> Lien (vers école)</label> <span class="error"></span>
+            <input type="url" id="link" name="link">
         </p>
 
         <p>

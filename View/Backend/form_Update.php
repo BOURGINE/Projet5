@@ -11,27 +11,27 @@
 
         <input type="hidden" id="id" name="id" value="<?=$competence->getId();?>">
         <p>
-            <label for="img"> Image </label>
-            <input type="file" id="tel" name="img" value="<?=$competence->getImg();?>">
+            <label for="img"> Image </label> <span class="error"></span>
+            <input type="file" id="img" name="img" value="<?=$competence->getImg();?>">
         </p>
 
         <p>
-            <label for="title"> Titre </label>
+            <label for="title"> Titre </label> <span class="error"></span>
             <input type="text" id="title" name="title" value="<?=$competence->getTitle();?>">
         </p>
 
         <p>
-            <label for="content"> Contenu (Pas obligatoire. Sauf pour conformité) </label>
-            <textarea name="content" form="form_CreateCompetence" cols="100" rows="10" class="tinymce"> <?=$competence->getContent();?></textarea>
+            <label for="content"> Contenu (Pas obligatoire. Sauf pour conformité) </label> <span class="error"></span>
+            <textarea name="content" id="content" form="form_CreateCompetence" cols="100" rows="10" class="tinymce"> <?=$competence->getContent();?></textarea>
         </p>
 
         <p>
-            <label for="link"> Lien (vers certificats)</label>
-            <input type="url" id="title" name="link" value="<?=$competence->getLink();?>">
+            <label for="link"> Lien (vers certificats)</label> <span class="error"></span>
+            <input type="url" id="link" name="link" value="<?=$competence->getLink();?>">
         </p>
 
-        <label for="categorie"> Catégorie (1 pour Front et 2 pour Back)</label>
-        <input type="number" min="1" max="2" name="categorie"  value="<?=$competence->getCategorie();?>">
+        <label for="categorie"> Catégorie (1 pour Front et 2 pour Back)</label> <span class="error"></span>
+        <input type="number" id="categorie" min="1" max="2" name="categorie"  value="<?=$competence->getCategorie();?>">
 
         <p>
             <input type="submit" value="Ajouter une Competence">

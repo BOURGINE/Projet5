@@ -41,19 +41,15 @@ class CertificatController
         $saveIsOk = $certificatManager->save($certificat);
 
         if($saveIsOk){
-            $message = 'Certificat bien ajouté';
-            // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
+            $message = 'Certificat bien ajouté';
         }
         else{
             $message = 'erreur survenu. Action non effectué';
         }
         // NB: Il faut que je retourne le résultat en HTLM.
-
-
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
     }
-
 
     /**
      ** Cette fonction sert à vérifier le type de fichier envoyé et à l'ajouter dans la db
@@ -78,28 +74,30 @@ class CertificatController
 
                     if($executeIsOk)
                     {
-                        echo "L'envoi de l'image a bien été effectué !";
+                        echo '<script language="javascript"> alert("Format d\'image validé")</script>';
                     }
                     else
                     {
-                        echo "Il y a un probleme au niveau de l'envoi du fichier image dans la BDD";
+                        echo '<script language="javascript"> alert("Il y a un problème d\'envoi de l\'image dans la BDD")</script>';
                     }
                 }
                 else
                 {
-                    echo "l'extention de votre image n'est pas pris en charge";
+                    echo '<script language="javascript"> alert("l\'extention de votre image n\'est pas pris en charge")</script>';
                 }
             }
             else
             {
-                echo ' La taille du fichier est trop grand';
+                echo '<script language="javascript"> alert("La taille de l\'image est trop grande")</script>';
             }
         }
         else
         {
-            echo 'le fichier image nexiste pas ou il y a une erreur';
+            echo '<script language="javascript"> alert("le fichier image n\'existe pas ou il y a une erreur")</script>';
         }
+
     }
+
 
     /**
      ** Cette fonction lit un certificat spécifique en fonction de sont id.
@@ -150,7 +148,6 @@ class CertificatController
 
         if($saveIsOk){
             $message = 'Félicitation, certificat a été modifié';
-
             // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
         }
@@ -159,7 +156,7 @@ class CertificatController
             $message = 'erreur au niveau de la modification de votre competence';
         }
 
-        //NB: il faut que je retroune le réslutat en HTML
+        //NB: il faut que je retroune le résultat dans la vue
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
 
     }
@@ -172,12 +169,12 @@ class CertificatController
         $deleteIsOk = $certificatManager->delete($recupPost);
 
         if($deleteIsOk){
-            $message = 'La compétence été bien supprimé';
+            $message = 'La compétence été bien supprimée';
         }else
         {
             $message = 'Une erreur est arrivée. Impossible de supprimer cette compétence';
         }
-        //NB: il faut que je retroune le réslutat en HTML
+        //NB: il faut que je retroune le résultat dans la vue
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
     }
 }

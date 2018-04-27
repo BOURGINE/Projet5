@@ -11,7 +11,7 @@
 
         <input type="hidden" name="id" value="<?=$menu->getId();?>">
         <p>
-            <label for="title"> Titre </label>
+            <label for="title"> Titre </label> <span class="error"></span>
             <input type="text" id="title" name="title" value="<?=$menu->getTitle();?>">
         </p>
 

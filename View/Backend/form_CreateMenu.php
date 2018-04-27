@@ -10,7 +10,7 @@
     <form  action="index.php?action=menu&&order=createMenu" method="POST" id="form_CreateCompetence">
 
         <p>
-            <label for="title"> Titre </label>
+            <label for="title"> Titre </label> <span class="error"></span>
             <input type="text" id="title" name="title">
         </p>
 

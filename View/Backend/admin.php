@@ -2,19 +2,44 @@
 
 <?php ob_start(); ?>
 
-
 <!-- ************************************************************************************
               CONTENU
 ****************************************************************************************-->
-<div style="padding-left: 15px; padding-right: 15px">
+
+    <!-- ****************************************
+                   ENTETE
+       ******************************************-->
+<div style="height: 275px; width: 100%;">
 
     <div>
-        <h1> BACKOFFICE</h1>
-
-        <a href="index.php"> <div class="button">ACCUEIL</div> </a>
-
-        <a href="index.php?action=deconnexion"> <div class="button">DECONNEXION</div> </a>
+        <img src="Public/images/back.jpg" alt="Bourgine FAGADE" width="100%" height="100%">
     </div>
+
+    <div id="bande_profil">
+        <div>
+            <img src="#" alt="Bourgine FAGADE"/>
+        </div>
+
+        <div>
+            <p> Moifier mon profil</p>
+        </div>
+
+        <div>
+            <a href="index.php"> <div class="button">ACCUEIL</div> </a>
+
+            <a href="index.php?action=deconnexion"> <div class="button">DECONNEXION</div> </a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ****************************************
+                CORPS BODY
+******************************************-->
+
+<div style="padding-left: 15px; padding-right: 15px">
+
 
 
     <!-- ****************************************
@@ -236,8 +261,8 @@
 
                         <?php foreach ($certificats as $certificat):?>
                             <tr>
-                                <td> <?= $certificat->getTitle()?>  </td>
-                                <td> <?= $certificat->getCat()?>  </td>
+                                <td> <?= $certificat->getTitle()?> </td>
+                                <td> <?= $certificat->getCat()?> </td>
                                 <td> <a href="index.php?action=certificat&order=formUpdate&id=<?= $certificat->getId()?>"> MODIFIER</a> </td>
                                 <td> <a href="index.php?action=certificat&order=delete&id=<?= $certificat->getId()?>"> SUPPRIMER</a> </td>
                             </tr>

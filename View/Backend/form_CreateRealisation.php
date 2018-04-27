@@ -11,28 +11,28 @@
 
 
         <p>
-            <label for="img"> Image </label>
-            <input type="file" id="tel" name="img">
+            <label for="img"> Image </label> <span class="error"></span>
+            <input type="file" id="img" name="img">
         </p>
 
         <p>
-            <label for="title"> Titre </label>
+            <label for="title"> Titre </label> <span class="error"></span>
             <input type="text" id="title" name="title">
         </p>
 
         <p>
-            <label for="content"> Contenu </label>
-            <textarea name="content" form="form_CreateRealisation" cols="100" rows="10" class="tinymce"> </textarea>
+            <label for="content"> Contenu </label> <span class="error"></span>
+            <textarea name="content" id="content_o" form="form_CreateRealisation" cols="100" rows="10" class="tinymce"> </textarea>
         </p>
 
         <p>
-            <label for="link_view"> Lien vers le site</label>
-            <input type="url" id="title" name="link_view">
+            <label for="link_view"> Lien vers le site</label> <span class="error"></span>
+            <input type="url" id="link_view" name="link_view">
         </p>
 
         <p>
-            <label for="link_git"> Lien vers github</label>
-            <input type="url" id="title" name="link_git">
+            <label for="link_git"> Lien vers github</label> <span class="error"></span>
+            <input type="url" id="link_git" name="link_git">
         </p>
 
         <p>

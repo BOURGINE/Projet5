@@ -11,18 +11,17 @@
 
 
         <p>
-            <label for="img"> Image </label>
-            <input type="file" id="tel" name="img">
+            <label for="img"> Image </label> <span class="error"></span>
+            <input type="file" id="img" name="img"/>
         </p>
 
         <p>
-            <label for="title"> Titre </label>
+            <label for="title"> Titre </label> <span class="error"></span>
             <input type="text" id="title" name="title">
         </p>
 
-        <label for="cat"> Catégorie </label>
-
-        <select name="cat">
+        <label for="cat"> Catégorie </label> <span class="error"></span>
+        <select name="cat" id="cat">
 
             <?php if(empty($menus)):?>
                 <option value=""> il n'y a aucune catégorie définis</option>

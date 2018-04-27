@@ -41,17 +41,17 @@ class CompetenceController
         $saveIsOk = $competenceManager->save($competence);
 
         if($saveIsOk){
-            $message = 'Competence bien ajouté';
 
-            // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
+            //  - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
+            $message = 'Competence bien ajouté';
 
         }
         else{
             $message = 'erreur survenu. Action non effectué';
         }
 
-        include(__DIR__ . "/../View/Backend/messageAdmin.php");
+        include(__DIR__ . "/../View/Backend/admin.php");
     }
 
 

@@ -11,20 +11,20 @@
 
 
         <p>
-            <label for="pseudo"> Pseudo </label>
-            <input type="text" id="title" name="pseudo">
+            <label for="pseudo"> Pseudo </label> <span class="error"></span>
+            <input type="text" id="pseudo" name="pseudo">
         </p>
 
         <p>
-            <label for="pass"> Mot de passe </label>
-            <input type="password" id="title" name="pass">
+            <label for="pass"> Mot de passe </label> <span class="error"></span>
+            <input type="password" id="pass" name="pass">
         </p>
 
         <p>
-            <label for="confirmPass">  Confirmez votre Mot de passe </label>
-            <input type="password" id="title" name="confirmPass">
+            <label for="confirmPass">  Confirmez votre Mot de passe </label> <span class="error"></span>
+            <input type="password" id="confirmPass" name="confirmPass">
         </p>
-        <input type="hidden" name="role" value="1">
+        <input type="hidden"  id="role" name="role" value="1">
         <p>
             <input type="submit" value="CREER UN ADMIN">
         </p>

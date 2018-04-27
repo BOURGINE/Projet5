@@ -1,12 +1,22 @@
 <?php $title = 'Message'; ?>
 
 <?php ob_start(); ?>
+<!-- ****************************************
+                  ENTETE
+      ******************************************-->
+
+<div>
+    <img src="Public/images/back.jpg" alt="Bourgine FAGADE" width="100%" height="auto">
+</div>
+
 
 <div>
 
-    <p> <?= $message ?> </p>
-
-    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINISTRATION </a></p>
+    <?php if(isset($message)):?>
+        <p> <?=$message?></p>
+    <?php elseif (isset($message2)):?>
+         <p> <?=$message2?></p>
+    <?php endif;?>
 
 </div>
 

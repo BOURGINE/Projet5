@@ -507,8 +507,6 @@ try {
             }
         }
 
-
-
         else
         {
             $controller->home();

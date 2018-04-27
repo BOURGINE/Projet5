@@ -11,26 +11,26 @@
 
 
         <p>
-            <label for="img"> Image </label>
-            <input type="file" id="tel" name="img">
+            <label for="img"> Image </label> <span class="error"></span>
+            <input type="file" id="img" name="img">
         </p>
 
         <p>
-            <label for="title"> Titre </label>
+            <label for="title"> Titre </label> <span class="error"></span>
             <input type="text" id="title" name="title">
         </p>
 
         <p>
-            <label for="content"> Contenu (Pas obligatoire. Sauf pour raison de conformité) </label>
+            <label for="content"> Contenu (Pas obligatoire. Sauf pour raison de conformité)</label> <span class="error"></span>
             <textarea  id="content" name="content" form="form_CreateCompetence" cols="100" rows="10" class="tinymce"> </textarea>
         </p>
 
         <p>
-            <label for="link"> Lien (vers certificats)</label>
+            <label for="link"> Lien (vers certificats)</label> <span class="error"></span>
             <input type="url" id="link" name="link">
         </p>
 
-        <label for="categorie"> Catégorie (1 pour Front et 2 pour Back)</label>
+        <label for="categorie"> Catégorie (1 pour Front et 2 pour Back)</label> <span class="error"></span>
         <input type="number" min="1" max="2" name="categorie" id="categorie">
 
         <p>

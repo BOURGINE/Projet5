@@ -5,23 +5,23 @@
 <div class="page_form">
     <h1> Modifier Certificat</h1>
 
-    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINIST </a></p>
+    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINISTRATION </a></p>
 
     <form  action="index.php?action=certificat&order=update" method="POST" id="form_CreateCompetence" enctype="multipart/form-data" >
 
         <input type="hidden" id="id" name="id" value="<?=$certificat->getId();?>">
         <p>
-            <label for="img"> Image </label>
-            <input type="file" id="tel" name="img" value="<?=$certificat->getImg();?>">
+            <label for="img"> Image </label> <span class="error"></span>
+            <input type="file" id="img" name="img" value="<?=$certificat->getImg();?>">
         </p>
 
         <p>
-            <label for="title"> Titre </label>
+            <label for="title"> Titre </label> <span class="error"></span>
             <input type="text" id="title" name="title" value="<?=$certificat->getTitle();?>">
         </p>
 
 
-        <select name="cat">
+        <select name="cat" id="cat"> <span class="error"></span>
 
             <?php if(empty($menus)):?>
                 <option value=""> il n'y a aucune catégorie définis</option>
