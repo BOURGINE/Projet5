@@ -33,7 +33,6 @@ class CompetenceController extends Controller
         $competence->setContent($contenu['content']);
         $competence->setLink($contenu['link']);
         $competence->setCategorie($contenu['categorie']);
-
         //envoi des informations à la db via la fonction save du manager
         // donc j'instancie la classe ContactManager
 
@@ -41,11 +40,9 @@ class CompetenceController extends Controller
         $saveIsOk = $competenceManager->save($competence);
 
         if($saveIsOk){
-
             //  - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
             $message = 'Félicitaion. Votre Competence bien été ajoutée';
-
         }
         else{
             $message = 'Désolé. Une erreur est survenue. Action non effectuée';

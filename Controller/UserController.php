@@ -54,14 +54,13 @@ class UserController extends Controller
 
     public function updateUser()
     {
-
         // j'instancie ensuite la fonction read de l'object contactManager;
         $userManager = new UserManager();
         $user= $userManager->read($_POST['id']);
 
         // J'envoi en les infos aux differents élements de la classe contact
-        $user->setImg($_FILES['img']['name']);
-        $user->setPseudo($_POST['pseudo']);
+        $newImage= $user->setImg($_FILES['img']['name']);
+        $newPseudo= $user->setPseudo($_POST['pseudo']);
 
         // Je sauvegarde mes informations dans la base de données
 
@@ -69,10 +68,11 @@ class UserController extends Controller
 
         if($saveIsOk)
         {
-            $message = 'Félicitation, votre profil a bien été modifiée';
-
-            // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
+            // 1 - TRAITEMENT DE L'IMAGE (Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
+
+            // 3 - J'en la confirmation à l'utilisateur
+            $message = 'Félicitation, votre profil a bien été modifiée';
         }
         else
         {

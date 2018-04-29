@@ -14,21 +14,36 @@
         <img src="Public/images/back.jpg" alt="Bourgine FAGADE" width="100%" height="100%">
     </div>
 
+    <!-- ************** ESPACE MEMBRE *****************-->
     <div id="bande_profil" style="height: 70px; width: 100%;">
 
-        <div style="border: 2px blue solid; height: 100%; width: 50%;">
 
-            <?php if(empty($users)):?>
-            <img src="Public/images/<?=$user->getImg()?>" alt="Bourgine FAGADE"/>
+        <div style="border: 2px blue solid; height: 100%; width: 75%; display: flex;">
+
+            <!-- ** IMAGE de PROFIL *-->
+            <?php if(isset($_SESSION['img']['name'])):?>
+
+            <div class="div_icone">
+                <img src="Public/images/<?=$_SESSION['img']['name']?>" alt="" width="100%" height="100%"/>
+            </div>
                 <p> je suis ici</p>
+
             <?php else:?>
-            <img src="Public/images/icone.png>" alt="Bourgine FAGADE"/>
-            <p> je suis else</p>
+            <div class="div_icone">
+                <img src="Public/images/backend.jpg" alt="Bourgine FAGADE" width="100%" height="100%">
+                <p> je suis else</p>
+            </div>
+
             <?php endif;?>
+
+            <!-- ** PSEUDO *-->
+            <?= 'HELLO '.$_SESSION['pseudo'].' !'?>
+
 
         </div>
 
-        <div style="border: 2px red solid; height: 100%; width: 50%;">
+        <!-- ************** MENU DE NAVIGATION *****************-->
+        <div style="border: 2px red solid; height: 100%; width: 25%;">
             <a href="index.php"> <div class="button">ACCUEIL</div> </a>
 
             <a href="index.php?action=deconnexion"> <div class="button">DECONNEXION</div> </a>

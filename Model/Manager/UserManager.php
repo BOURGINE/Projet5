@@ -111,11 +111,18 @@ class UserManager extends Connex_Db
 
         //Liaison des paramètres des elements de formulaire a ceux des champs de la bdd
         $this->pdoStatement->bindValue(':id', $user->getId(), PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':img', $user->getImg(), PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':pseudo', $user->getPseudo(), PDO::PARAM_STR);
+        $newImage= $this->pdoStatement->bindValue(':img', $user->getImg(), PDO::PARAM_STR);
+        $newPseudo= $this->pdoStatement->bindValue(':pseudo', $user->getPseudo(), PDO::PARAM_STR);
 
         $executeIsOk= $this->pdoStatement->execute();
 
+        if($executeIsOk)
+        {
+          // session_destroy();
+          //  session_start();
+            $_SESSION['img']['name'] = $newImage;
+            $_SESSION['pseudo'] =  $newPseudo;
+        }
         //recuperation du résultat
         return $executeIsOk;
     }

@@ -532,7 +532,7 @@ try {
             // Faire vérification côté serveur
             if(!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['subject']) && !empty($_POST['content']))
             {
-                $messageController->createMessage($_POST);
+                //$messageController->createMessage($_POST);
 
                 // ET LA FONCTION D'ENVOI DE MAIL
 
@@ -574,12 +574,12 @@ try {
 
         }
 
-        elseif ($_GET['action'] == 'messageUpdate')
+        elseif ($_GET['action'] == 'messageRead')
         {
             // Ici, je dois vérifier si la personne qui fait l'action est connectée
             if(isset($_SESSION['id']))
-            {
-                $messageController->updateStatut();
+            {// Je lis le message via le formulaire
+                $messageController->ReadMessage($_POST['id']);
             }
             else // Bye l'imposteur
             {

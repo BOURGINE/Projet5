@@ -99,8 +99,27 @@ class MessageController extends Controller
         $messages = $messageManager->readAllByPage();
 
 
-        include(__DIR__ . "/../View/Backend/readMessage.php");
+        include(__DIR__ . "/../View/Backend/readAllMessages.php");
     }
+
+
+
+    /**
+     **  Cette fonction lis un message précis avec un formulaire non modifiable
+     *  disabled="disabled"
+     **/
+
+    public function ReadMessage($message_recup)
+    {
+        $messageManager = new MessageManager();
+        $message= $messageManager->read($message_recup);
+
+        // IL doit aussi demandé le nouveau formulaire à la vue selon l'id
+        include(__DIR__."/../View/Backend/readMessage.php");
+
+        $this->updateStatut();
+    }
+
 
 
     public function updateStatut()
@@ -112,7 +131,6 @@ class MessageController extends Controller
 
         // Je sauvegarde mes informations dans la base de données
         $messageManager->save($message);
-
     }
 
 
@@ -139,7 +157,7 @@ class MessageController extends Controller
     public function SendMail($recup_messages)
     {
 
-        $mail = 'bourgine.fagade@gmail.fr'; // Déclaration de l'adresse de destination.
+        $mail = 'bourgine.fagade@gmail.com'; // Déclaration de l'adresse de destination.
         if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
         {
             $passage_ligne = "\r\n";

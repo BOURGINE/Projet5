@@ -1,7 +1,6 @@
-<?php $title = 'MESSAGES REÇUS'; ?>
+<?php $title = 'Lire message'; ?>
 
 <?php ob_start();
-
 
 // Boutton back office
 if (isset($_SESSION['id']))
@@ -14,54 +13,12 @@ else
     $info1='';
 }
 
-// GESTION DE PAGINATION
-
-$pagination='';
-
-if($this->last_page != 1)
-{
-    if($this->num_page > 1)
-    {
-        $previous = $this->num_page-1;
-        $pagination = '<a href="index.php?action=messages&p='.$previous.'"> Précédent</a> &nbsp; &nbsp;';
-
-        for ($i = $this->num_page - $this->num_max_before_after; $i<$this->num_page; $i++){
-            if($i>0)
-            {
-                $pagination .='<a href="index.php?action=messages&p='.$i.'">'.$i.'</a> &nbsp;';
-            }
-        }
-
-    }
-
-    $pagination .='<span class="active">'.$this->num_page.'</span> &nbsp;';
-
-    for ($i = $this->num_page +1; $i <= $this->last_page ; $i++){
-
-        $pagination .='<a href="index.php?action=messages&p='.$i.'">'.$i.'</a>';
-
-        if($i >= $this->num_page + $this->num_max_before_after)
-        {
-            break;
-        }
-    }
-
-    // Si je ne suis pas sur la dernière page,
-    if($this->num_page!= $this->last_page)
-    {
-        $next = $this->num_page + 1;
-        $pagination .='<a href="index.php?action=messages&p='.$next.'"> Suivant </a>';
-    }
-}
 
 ?>
 
-<!-- ************************************************************************************
-              CONTENU
-****************************************************************************************-->
-    <!-- ****************************************
-                   ENTETE
-       ******************************************-->
+<!-- ****************************************
+                  ENTETE
+      ******************************************-->
 <div style="height: 275px; width: 100%; border: 5px red solid">
 
     <div style="height: 200px; width: 100%;">
@@ -76,6 +33,8 @@ if($this->last_page != 1)
 
             <?= $info1 ?>
 
+            <a href="index.php?action=messages&p="> <div class="button">MAIL BOX</div> </a>
+
             <a href="index.php?action=deconnexion"> <div class="button">DECONNEXION</div> </a>
 
             <a href="index.php?action=code4liokoFormUpdate&id=<?=$_SESSION['id']?>"> <div class="button">Modifier mon profil </div></a>
@@ -83,68 +42,29 @@ if($this->last_page != 1)
 
     </div>
 </div>
+<!-- ******************************
+                MESSAGES
+      ******************************-->
+<div class="page_form" style="padding-left:20%; padding-right:20%;">
 
+    <form>
 
-<!-- ****************************************
-                CORPS BODY
-******************************************-->
+        <input type="hidden" id="id" name="id" value="<?=$message->getId();?>">
+        <p>
+            <input type="text" id="nom" name="nom"  disabled="disabled" value="<?=$message->getNom();?>">
+            <input type="text" id="mail" name="mail" disabled="disabled" value="<?=$message->getMail();?>">
+            <input type="text" id="date_creation" name="date_creation" disabled="disabled" value="<?=$message->getDate();?>">
+            <input type="text" id="subject" name="subject" disabled="disabled" value="<?=$message->getSubject();?>">
+        </p>
 
-<div style="padding-left: 15px; padding-right: 15px">
+        <p>
+            <label for="content"> Message </label> <span class="error"></span>
+            <textarea name="content" id="content" cols="100" rows="10" disabled="disabled" > <?=$message->getContent();?></textarea>
+        </p>
 
-    <!-- ****************************************
-               MESSAGES REÇUS
-    ******************************************-->
-    <div class="section_articles">
-
-        <!-- Titre VISIBLE -->
-        <div>
-            <?php if(empty($messages)):?>
-                <p> il n'y a aucun message</p>
-            <?php else:?>
-
-                <?php if($messages === false):?>
-                    <p> Une erreur vient de se produire</p>
-                <?php else:?>
-
-                        <?php foreach ($messages as $message):?>
-                        <table id="entete_message">
-                            <tr>
-                                <td> DATE: <?= $message->getDate();?> </td>
-                                <td> AUTEUR: <?= $message->getNom();?> </td>
-                                <td> SUJET: <?= $message->getSubject();?>  </td>
-                            </tr>
-                            <tr>
-                                <td> STATUT: <?= $message->getStatut();?> </td>
-
-                                <td>
-                                    <form  action="index.php?action=messageUpdate" method="POST">
-                                            <input type="hidden" name="id" value="<?=$message->getId()?>">
-                                            <input type="hidden" name="statut" value="lu"/>
-                                            <input  class="button" type="submit" value="LIRE" />
-                                    </form>
-                                </td>
-
-
-                                <td> <a href="index.php?action=messagesDelete&id=<?= $message->getId();?>"> SUPPRIMER</a> </td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="3"> <?= $message->getContent();?> </td>
-                            </tr>
-
-                        </table>
-                        <?php endforeach;?>
-
-                <?php endif;?>
-            <?php endif;?>
-        </div>
-
-    </div>
+    </form>
 
 </div>
-
-<?php echo '<div id="pagination">'.$pagination.'</div>'?>
-
 <?php $content = ob_get_clean(); ?>
 
 <?php require('../Projet5/View/Frontend/template.php'); ?>

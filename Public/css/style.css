@@ -465,6 +465,16 @@ article:hover .image_realisation
     margin: 10px;
 }
 
+.active
+{
+    color: red;
+    margin: 10px;
+    padding: 5px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+
 table
 {
     border-collapse: collapse !important;
