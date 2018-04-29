@@ -13,7 +13,7 @@ namespace Projet5\Controller;
 use Projet5\Model\Entity\Parcour;
 use Projet5\Model\Manager\ParcourManager;
 
-class ParcourController
+class ParcourController extends Controller
 {
 
     private $parcour;
@@ -41,13 +41,13 @@ class ParcourController
         $saveIsOk = $parcourManager->save($parcour);
 
         if($saveIsOk){
-            $message = 'Parcours bien ajouté';
+            $message = 'Félicitation. Votre Parcours bien été ajouté';
 
             // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
 
         } else{
-            $message = 'erreur survenu. Action non effectué';
+            $message = 'Désolé. Une erreur est survenue. Action non effectuée';
         }
         // NB: Il faut que je retourne le résultat en HTLM. Je pense que ça doit etre au niveau de la vue.
 
@@ -55,51 +55,7 @@ class ParcourController
     }
 
 
-    /**
-     ** Cette fonction sert à vérifier le type de fichier envoyé et à l'ajouter dans la db
-     **/
 
-    public function saveImg()
-    {
-        // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-        if (isset($_FILES['img']) AND $_FILES['img']['error'] == 0)
-        {
-            // Testons si le fichier n'est pas trop gros
-            if ($_FILES['img']['size'] <= 1000000)
-            {
-                // Testons si l'extension est autorisée
-                $infosfichier = pathinfo($_FILES['img']['name']);
-                $extension_upload = $infosfichier['extension'];
-                $extensions_autorisees = array('pdf','jpg', 'jpeg', 'gif', 'png');
-                if (in_array($extension_upload, $extensions_autorisees))
-                {
-                    // On peut valider le fichier et le stocker définitivement
-                    $executeIsOk= move_uploaded_file($_FILES['img']['tmp_name'], __DIR__ .'/../Public/images/'.basename($_FILES['img']['name']));
-
-                    if($executeIsOk)
-                    {
-                        echo "L'envoi de l'image a bien été effectué !";
-                    }
-                    else
-                    {
-                        echo "Il y a un probleme au niveau de l'envoi du fichier image dans la BDD";
-                    }
-                }
-                else
-                {
-                    echo "l'extention de votre image n'est pas pris en charge";
-                }
-            }
-            else
-            {
-                echo ' La taille du fichier est trop grand';
-            }
-        }
-        else
-        {
-            echo 'le fichier image nexiste pas ou il y a une erreur';
-        }
-    }
 
     public function formUpdate($recupInfos)
     {
@@ -133,14 +89,14 @@ class ParcourController
 
         if($saveIsOk)
         {
-            $message = 'Félicitation, parours a été modifié';
+            $message = 'Félicitation. Votre parours a bien été modifié';
 
             // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
         }
         else
         {
-            $message = 'erreur au niveau de la modification de votre parcour';
+            $message = 'Désolé. Une erreur est survenue au niveau de la modification de votre parcours';
         }
 
         //NB: il faut que je retroune le réslutat en HTML
@@ -156,10 +112,10 @@ class ParcourController
         $deleteIsOk = $parcourManager->delete($recupPost);
 
         if($deleteIsOk){
-            $message = 'Le parcours été bien supprimé';
+            $message = 'Félicitation. Le parcours été bien supprimé';
         }else
         {
-            $message = 'Une erreur est arrivée. Impossible de supprimer ce parcours';
+            $message = 'Désolé. Une erreur est arrivée. Impossible de supprimer ce parcours';
         }
         //NB: il faut que je retroune le réslutat en HTML
         include(__DIR__ . "/../View/Backend/messageAdmin.php");

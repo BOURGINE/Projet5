@@ -5,29 +5,35 @@
 <!-- ************************************************************************************
               CONTENU
 ****************************************************************************************-->
-
     <!-- ****************************************
                    ENTETE
        ******************************************-->
 <div style="height: 275px; width: 100%;">
 
-    <div>
+    <div style="height: 200px; width: 100%;">
         <img src="Public/images/back.jpg" alt="Bourgine FAGADE" width="100%" height="100%">
     </div>
 
-    <div id="bande_profil">
-        <div>
-            <img src="#" alt="Bourgine FAGADE"/>
+    <div id="bande_profil" style="height: 70px; width: 100%;">
+
+        <div style="border: 2px blue solid; height: 100%; width: 50%;">
+
+            <?php if(empty($users)):?>
+            <img src="Public/images/<?=$user->getImg()?>" alt="Bourgine FAGADE"/>
+                <p> je suis ici</p>
+            <?php else:?>
+            <img src="Public/images/icone.png>" alt="Bourgine FAGADE"/>
+            <p> je suis else</p>
+            <?php endif;?>
+
         </div>
 
-        <div>
-            <p> Moifier mon profil</p>
-        </div>
-
-        <div>
+        <div style="border: 2px red solid; height: 100%; width: 50%;">
             <a href="index.php"> <div class="button">ACCUEIL</div> </a>
 
             <a href="index.php?action=deconnexion"> <div class="button">DECONNEXION</div> </a>
+
+            <a href="index.php?action=code4liokoFormUpdate&id=<?=$_SESSION['id']?>"> <div class="button">Modifier mon profil </div></a>
         </div>
 
     </div>
@@ -39,8 +45,6 @@
 ******************************************-->
 
 <div style="padding-left: 15px; padding-right: 15px">
-
-
 
     <!-- ****************************************
                 COMPETENCES (ALL)
@@ -315,49 +319,34 @@
             <h4> <a href="index.php?action=code4liokoFormCreate" style="color: darkred"> Créer un nouveau Compte </a></h4>
          </div>
     </div>
-</div>
 
 
-<!-- ****************************************
-       MESSAGE (FORMULAIRE DE CONTACT
+
+    <!-- ****************************************
+       MESSAGES (FORMULAIRE DE CONTACT)
 ******************************************-->
     <div class="section_articles">
 
-        <!-- Titre -->
-        <div class="entete_session" id="entete_message">
-            <a href="#corps_menu">  <h3> MENU </h3> </a>
-        </div>
-
         <!-- Corps -->
-        <div class="corps_session" id="corps_message">
-            <?php if(empty($menus)):?>
-                <p> il n'y a aucun message</p>
+
+        <div>
+
+            <?php if($message_non_lu == 0):?>
+                <p> il n'y a aucun nouveau message</p>
             <?php else:?>
 
-                <?php if($menus === false):?>
-                    <p> Une erreur vient de se produire</p>
-                <?php else:?>
+            <?= $message_non_lu ?> <span> Message(s) non lu(s)</span>
 
-                    <table>
-                        <tr>
-                            <th> Titre </th>
-                            <th colspan="2"> ACTIONS </th>
-                        </tr>
-
-                        <?php foreach ($menus as $menu):?>
-                            <tr>
-                                <td> <?= $menu->getTitle();?>  </td>
-                                <td> <a href="index.php?action=menu&order=formUpdate&id=<?= $menu->getId();?>"> MODIFIER</a> </td>
-                                <td> <a href="index.php?action=menu&order=delete&id=<?= $menu->getId();?>"> SUPPRIMER</a> </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </table>
-
-                <?php endif;?>
             <?php endif;?>
-            <h4> <a href="index.php?action=menu&order=formCreate" style="color: darkred"> Ajouter MENU </a></h4>
+            <h4> <a href="index.php?action=messages&p=" style="color: darkred"> LIRE LES MESSAGES </a></h4>
         </div>
     </div>
+
+
+</div>
+
+
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('../Projet5/View/Frontend/template.php'); ?>

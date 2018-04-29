@@ -13,7 +13,7 @@ namespace Projet5\Controller;
 use Projet5\Model\Entity\Competence;
 use Projet5\Model\Manager\CompetenceManager;
 
-class CompetenceController
+class CompetenceController extends Controller
 {
     private $competence;
 
@@ -44,62 +44,20 @@ class CompetenceController
 
             //  - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
-            $message = 'Competence bien ajouté';
+            $message = 'Félicitaion. Votre Competence bien été ajoutée';
 
         }
         else{
-            $message = 'erreur survenu. Action non effectué';
+            $message = 'Désolé. Une erreur est survenue. Action non effectuée';
         }
 
-        include(__DIR__ . "/../View/Backend/admin.php");
+        include(__DIR__ . "/../View/Backend/messageAdmin.php");
     }
 
 
     /**
-     ** Cette fonction sert à vérifier le type de fichier envoyé et à l'ajouter dans la db
+     ** Cette fonction appelle le formulaire de mise à jour
      **/
-
-    public function saveImg()
-    {
-        // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-        if (isset($_FILES['img']) AND $_FILES['img']['error'] == 0)
-        {
-            // Testons si le fichier n'est pas trop gros
-            if ($_FILES['img']['size'] <= 1000000)
-            {
-                // Testons si l'extension est autorisée
-                $infosfichier = pathinfo($_FILES['img']['name']);
-                $extension_upload = $infosfichier['extension'];
-                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
-                if (in_array($extension_upload, $extensions_autorisees))
-                {
-                    // On peut valider le fichier et le stocker définitivement
-                    $executeIsOk= move_uploaded_file($_FILES['img']['tmp_name'], __DIR__ .'/../Public/images/'.basename($_FILES['img']['name']));
-
-                    if($executeIsOk)
-                    {
-                        echo "L'envoi de l'image a bien été effectué !";
-                    }
-                    else
-                    {
-                        echo "Il y a un probleme au niveau de l'envoi du fichier image dans la BDD";
-                    }
-                }
-                else
-                {
-                    echo "l'extention de votre image n'est pas pris en charge";
-                }
-            }
-            else
-            {
-                echo ' La taille du fichier est trop grand';
-            }
-        }
-        else
-        {
-            echo 'le fichier image nexiste pas ou il y a une erreur';
-        }
-    }
 
     public function formUpdate($recupInfos)
     {
@@ -113,6 +71,9 @@ class CompetenceController
     }
 
 
+    /**
+     ** Cette fonction appelle l'action de mise à jour
+     **/
     public function update()
     {
         // Je cré un nouvel object avec la classe ContactManager;
@@ -133,14 +94,14 @@ class CompetenceController
         $saveIsOk = $competenceManager->save($competence);
 
         if($saveIsOk){
-            $message = 'Félicitation, competence a été modifié';
+            $message = 'Félicitation, votre competence a bien été modifiée';
 
             // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
         }
         else
             {
-            $message = 'erreur au niveau de la modification de votre competence';
+            $message = 'Désolé. Une erreur est survenue  au niveau de la modification de votre compétence';
         }
 
         //NB: il faut que je retroune le réslutat en HTML
@@ -149,6 +110,9 @@ class CompetenceController
 
     }
 
+    /**
+     ** Cette fonction supprime une Compétence ayant un id spécifique
+     **/
 
     public function delete($recupPost)
     {
@@ -157,10 +121,10 @@ class CompetenceController
         $deleteIsOk = $competenceManager->delete($recupPost);
 
         if($deleteIsOk){
-            $message = 'La compétence été bien supprimé';
+            $message = ' Félicitation, votre compétence bien été supprimée';
         }else
         {
-            $message = 'Une erreur est arrivée. Impossible de supprimer cette compétence';
+            $message = 'Désolé. Une erreur est arrivée. Impossible de supprimer cette compétence';
         }
         //NB: il faut que je retroune le réslutat en HTML
         include(__DIR__ . "/../View/Backend/messageAdmin.php");

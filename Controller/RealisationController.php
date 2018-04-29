@@ -14,10 +14,10 @@ use Projet5\Model\Entity\Realisation;
 use Projet5\Model\Manager\RealisationManager;
 
 
-class RealisationController
+class RealisationController extends Controller
 {
 
-    private $parcour;
+    private $realisation;
 
     /**
      **  CREATION d'une Realisation
@@ -44,7 +44,7 @@ class RealisationController
 
 
         if($saveIsOk){
-            $message = 'Realisation bien ajouté';
+            $message = 'Féliciation. Votre Realisation a bien été ajoutée';
 
             // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
@@ -52,7 +52,7 @@ class RealisationController
 
         else
         {
-            $message = 'erreur survenu. Action non effectuée';
+            $message = 'Désolé. Une erreur est survenue. Action non effectuée';
         }
         // NB: Il faut que je retourne le résultat en HTLM. Je pense que ça doit etre au niveau de la vue.
 
@@ -60,51 +60,7 @@ class RealisationController
     }
 
 
-    /**
-     ** Cette fonction sert à vérifier le type de fichier envoyé et à l'ajouter dans la db
-     **/
 
-    public function saveImg()
-    {
-        // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-        if (isset($_FILES['img']) AND $_FILES['img']['error'] == 0)
-        {
-            // Testons si le fichier n'est pas trop gros
-            if ($_FILES['img']['size'] <= 1000000)
-            {
-                // Testons si l'extension est autorisée
-                $infosfichier = pathinfo($_FILES['img']['name']);
-                $extension_upload = $infosfichier['extension'];
-                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
-                if (in_array($extension_upload, $extensions_autorisees))
-                {
-                    // On peut valider le fichier et le stocker définitivement
-                    $executeIsOk= move_uploaded_file($_FILES['img']['tmp_name'], __DIR__ .'/../Public/images/'.basename($_FILES['img']['name']));
-
-                    if($executeIsOk)
-                    {
-                        echo "L'envoi de l'image a bien été effectué !";
-                    }
-                    else
-                    {
-                        echo "Il y a un probleme au niveau de l'envoi du fichier image dans la BDD";
-                    }
-                }
-                else
-                {
-                    echo "l'extention de votre image n'est pas pris en charge";
-                }
-            }
-            else
-            {
-                echo ' La taille du fichier est trop grand';
-            }
-        }
-        else
-        {
-            echo 'le fichier image nexiste pas ou il y a une erreur';
-        }
-    }
 
     public function formUpdate($recupInfos)
     {
@@ -139,14 +95,14 @@ class RealisationController
 
         if($saveIsOk)
         {
-            $message = 'Félicitation, realisation a été modifié';
+            $message = 'Félicitation, votre réalisation a bien été modifiée';
 
             // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
         }
         else
         {
-            $message = 'erreur au niveau de la modification de votre realisation';
+            $message = 'Désolé. Une erreur est survenu au niveau de la modification de votre réalisation';
         }
 
         //NB: il faut que je retroune le réslutat en HTML
@@ -162,10 +118,10 @@ class RealisationController
         $deleteIsOk = $realisationManager->delete($recupPost);
 
         if($deleteIsOk){
-            $message = 'La realisation été bien supprimé';
+            $message = 'Félicitation. La realisation bien été supprimée';
         }else
         {
-            $message = 'Une erreur est arrivée. Impossible de supprimer cette realisation';
+            $message = 'Désolé. Une erreur est arrivée. Impossible de supprimer cette réalisation';
         }
         //NB: il faut que je retroune le réslutat en HTML
         include(__DIR__ . "/../View/Backend/messageAdmin.php");

@@ -3,7 +3,7 @@ $(document).ready(function(){
     var result =true;
 
 // GESTION DES BORDURES ET MESSAGES AU SUBMIT
-    $('form').submit(function()
+    $('#form_visiteur').submit(function()
     {
         // Formulaire de contact
         if($('#nom').val()=="")
@@ -33,6 +33,12 @@ $(document).ready(function(){
             $('#message').prev('.error').fadeIn('fast').text('champs obligatoire');
             result=false;
         }
+        return result;
+    });
+
+
+    $('form').submit(function()
+    {
 
         // AUTRES FORMULAIRES
 
@@ -122,7 +128,15 @@ $(document).ready(function(){
             result=false;
         }
 
+        if($('#nom').val()=="")
+        {
+            $('#nom').css('border','2px red solid','!important');
+            $('#nom').prev('.error').fadeIn('fast').text('champs obligatoire');
+            result=false;
+        }
+
         return result;
+
     });
 
 
@@ -246,15 +260,12 @@ $(document).ready(function(){
 
     $('#img').keyup(function(){
 
-        if($('#true').val().length<4)
+        if($('this').val().length<4)
         {
             result=true;
         }
         return result;
     });
-
-
-
 
 
     $('#content_o').keyup(function(){
@@ -333,13 +344,30 @@ $(document).ready(function(){
         return result;
     });
 
+    $('#pseudo').keyup(function(){
+
+        if($('#pseudo').val().length<4)
+        {
+            $('#pseudo').css('border','2px red solid','!important');
+            $('#pseudo').prev('.error').fadeIn('fast').text('Doit comporter au moins 4 caractères');
+            result=false;
+        }
+        else
+        {
+            $('#pseudo').css('border','2px green solid','!important');
+            $('#pseudo').prev('.error').fadeOut();
+            result= true;
+        }
+        return result;
+    });
+
 
     $('#pass').keyup(function(){
 
-        if($('#pass').val().length<4)
+        if($('#pass').val().length<5)
         {
             $('#pass').css('border','2px red solid','!important');
-            $('#pass').prev('.error').fadeIn('fast').text('Lien non valide');
+            $('#pass').prev('.error').fadeIn('fast').text('Doit comporter au moins 5 caractères');
             result=false;
         }
         else
@@ -353,10 +381,10 @@ $(document).ready(function(){
 
     $('#confirmPass').keyup(function(){
 
-        if($('#confirmPass').val().length<4)
+        if($('#confirmPass').val() != $('#pass').val())
         {
             $('#confirmPass').css('border','2px red solid','!important');
-            $('#confirmPass').prev('.error').fadeIn('fast').text('Lien non valide');
+            $('#confirmPass').prev('.error').fadeIn('fast').text('Doit correspondre au mot de passe');
             result=false;
         }
         else

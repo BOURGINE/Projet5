@@ -34,16 +34,15 @@ class MenuController
         $saveIsOk = $menuManager->save($menu);
 
         if($saveIsOk){
-            $message = 'menu bien ajouté';
+            $message = 'Féliciation. Le Menu a bien été ajouté';
 
         } else{
-            $message = 'erreur survenu. Action non effectué';
+            $message = 'Désolé. Une erreur est survenue. Action non effectuée';
         }
         // NB: Il faut que je retourne le résultat en HTLM. Je pense que ça doit etre au niveau de la vue.
 
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
     }
-
 
 
     public function formUpdate($recupInfos)
@@ -75,11 +74,11 @@ class MenuController
 
         if($saveIsOk)
         {
-            $message = 'Félicitation, menu a été modifié';
+            $message = 'Félicitation. Le Menu a bien été modifié';
         }
         else
         {
-            $message = 'erreur au niveau de la modification de votre menu';
+            $message = 'Désolé. Une erreur est survenue au niveau de la modification de votre Menu';
         }
 
         //NB: il faut que je retroune le réslutat en HTML
@@ -94,10 +93,10 @@ class MenuController
         $deleteIsOk = $menuManager->delete($recupPost);
 
         if($deleteIsOk){
-            $message = 'Le menu été bien supprimé';
+            $message = 'Félicitation. Le menu bien été supprimé';
         }else
         {
-            $message = 'Une erreur est arrivée. Impossible de supprimer ce menu';
+            $message = 'Désolé. Une erreur est arrivée. Impossible de supprimer ce menu';
         }
         //NB: il faut que je retroune le réslutat en HTML
         include(__DIR__ . "/../View/Backend/messageAdmin.php");

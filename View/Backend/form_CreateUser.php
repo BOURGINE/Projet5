@@ -24,7 +24,6 @@
             <label for="confirmPass">  Confirmez votre Mot de passe </label> <span class="error"></span>
             <input type="password" id="confirmPass" name="confirmPass">
         </p>
-        <input type="hidden"  id="role" name="role" value="1">
         <p>
             <input type="submit" value="CREER UN ADMIN">
         </p>

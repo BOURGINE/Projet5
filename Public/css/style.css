@@ -153,7 +153,6 @@ nav ul li
     flex-wrap: wrap;
     flex-direction:row;
     justify-content: center;
-    border: 10px yellow solid;
 }
 
 /*----------------------------------------
@@ -453,16 +452,9 @@ article:hover .image_realisation
     height:75px;
     width: 100%;
     background-color: white;
-    margin-top: -5px;
     display: flex;
     align-content: space-between;
     flex-wrap: wrap;
-
-}
-
-#bande_profil
-{
-    box-sizing: border-box;
 }
 
 .section_articles
@@ -511,6 +503,19 @@ td, th
 {
     display: none;
 }
+
+#block_message_admin
+{
+    width: 400px;
+    height: 300px;
+    border: 5px black solid;
+    border-radius: 20px;
+    margin: auto;
+    font-size: 20px;
+    text-align: end;
+    font-weight: bold;
+}
+
 
 /*-------------------------------------------------
 			      media query

@@ -1,22 +1,21 @@
-<?php $title = 'Message'; ?>
+<?php $title = 'Lecture des messages'; ?>
 
 <?php ob_start(); ?>
 <!-- ****************************************
                   ENTETE
-      ******************************************-->
+     ******************************************-->
 
 <div>
     <img src="Public/images/back.jpg" alt="Bourgine FAGADE" width="100%" height="auto">
 </div>
 
+<div id="block_message_admin">
 
-<div>
+    <a href="index.php?action=code4liokoConnexion">
+        <img src="Public/images/croix.png" alt="Bourgine FAGADE" width="50px" height="50px">
+    </a>
 
-    <?php if(isset($message)):?>
-        <p> <?=$message?></p>
-    <?php elseif (isset($message2)):?>
-         <p> <?=$message2?></p>
-    <?php endif;?>
+    <p> <?=$message?></p>
 
 </div>
 

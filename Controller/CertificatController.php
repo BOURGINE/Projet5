@@ -14,10 +14,9 @@ use Projet5\Model\Entity\Certificat;
 use Projet5\Model\Manager\CertificatManager;
 use Projet5\Model\Manager\MenuManager;
 
-class CertificatController
+class CertificatController extends Controller
 {
     private $certificat;
-
 
     /**
      **  CREATION d'une compétence
@@ -42,65 +41,19 @@ class CertificatController
 
         if($saveIsOk){
             $this->saveImg();
-            $message = 'Certificat bien ajouté';
+            $message = 'Félicitaion le Certificat a bien été ajouté';
         }
         else{
-            $message = 'erreur survenu. Action non effectué';
+            $message = 'Désolé, une erreur est survenue. Action non effectuée';
         }
         // NB: Il faut que je retourne le résultat en HTLM.
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
     }
 
-    /**
-     ** Cette fonction sert à vérifier le type de fichier envoyé et à l'ajouter dans la db
-     **/
-
-    public function saveImg()
-    {
-        // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-        if (isset($_FILES['img']) AND $_FILES['img']['error'] == 0)
-        {
-            // Testons si le fichier n'est pas trop gros
-            if ($_FILES['img']['size'] <= 1000000)
-            {
-                // Testons si l'extension est autorisée
-                $infosfichier = pathinfo($_FILES['img']['name']);
-                $extension_upload = $infosfichier['extension'];
-                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png', 'pdf');
-                if (in_array($extension_upload, $extensions_autorisees))
-                {
-                    // On peut valider le fichier et le stocker définitivement
-                    $executeIsOk= move_uploaded_file($_FILES['img']['tmp_name'], __DIR__ .'/../Public/images/'.basename($_FILES['img']['name']));
-
-                    if($executeIsOk)
-                    {
-                        echo '<script language="javascript"> alert("Format d\'image validé")</script>';
-                    }
-                    else
-                    {
-                        echo '<script language="javascript"> alert("Il y a un problème d\'envoi de l\'image dans la BDD")</script>';
-                    }
-                }
-                else
-                {
-                    echo '<script language="javascript"> alert("l\'extention de votre image n\'est pas pris en charge")</script>';
-                }
-            }
-            else
-            {
-                echo '<script language="javascript"> alert("La taille de l\'image est trop grande")</script>';
-            }
-        }
-        else
-        {
-            echo '<script language="javascript"> alert("le fichier image n\'existe pas ou il y a une erreur")</script>';
-        }
-
-    }
-
 
     /**
      ** Cette fonction lit un certificat spécifique en fonction de sont id.
+     * NE PAS EFFACER
      * Elle est Permet de lit le certificat pour modification
      **/
     public function read($idrecup)
@@ -147,15 +100,14 @@ class CertificatController
         $saveIsOk = $certificatManager->save($certificat);
 
         if($saveIsOk){
-            $message = 'Félicitation, certificat a été modifié';
+            $message = 'Félicitation, le certificat a  bien été modifié';
             // 2 - TRAITEMENT DE L'IMAGE ( Envoi de l'image dans mon dossier imgUpload)
             $this->saveImg();
         }
         else
         {
-            $message = 'erreur au niveau de la modification de votre competence';
+            $message = ' Désolé. Une erreur est survenue au niveau de la modification de votre compétence';
         }
-
         //NB: il faut que je retroune le résultat dans la vue
         include(__DIR__ . "/../View/Backend/messageAdmin.php");
 
@@ -169,10 +121,10 @@ class CertificatController
         $deleteIsOk = $certificatManager->delete($recupPost);
 
         if($deleteIsOk){
-            $message = 'La compétence été bien supprimée';
+            $message = 'Félicitation. La compétence bien été supprimée';
         }else
         {
-            $message = 'Une erreur est arrivée. Impossible de supprimer cette compétence';
+            $message = 'Désolé, Une erreur est arrivée. Impossible de supprimer cette compétence';
         }
         //NB: il faut que je retroune le résultat dans la vue
         include(__DIR__ . "/../View/Backend/messageAdmin.php");

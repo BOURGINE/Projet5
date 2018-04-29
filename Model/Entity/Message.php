@@ -14,8 +14,10 @@ class Message
     private $id;
     private $nom;
     private $mail;
+    private $date_creation;
     private $subject;
     private $content;
+    private $statut;
 
     /**
      * @return mixed
@@ -79,6 +81,16 @@ class Message
     /**
      * @return mixed
      */
+    public function getDate()
+    {
+        $date = date_create($this->date_creation);
+        return date_format($date, 'd/m/Y à H:i:s');
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function getSubject()
     {
         if(!isset($subject) && !is_string($this->subject)){
@@ -129,6 +141,36 @@ class Message
         }
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getStatut()
+    {
+        if(!isset($statut) && !is_string($this->statut))
+        {
+            echo 'la fonction getContent a du mal a récupérer le Contenu';
+        }
+        return (string) htmlspecialchars($this->statut);
+    }
+
+    /**
+     * @param mixed $statut
+     */
+    public function setStatut($statut)
+    {
+        if(!isset($statut) && !is_string($statut))
+        {
+            echo'le statut n\'est pas bien définie';
+        }
+        else
+        {
+            $this->statut = htmlspecialchars($statut);
+        }
+        return $this;
+    }
+
+
 
 
 }

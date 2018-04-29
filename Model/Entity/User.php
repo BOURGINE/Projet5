@@ -14,7 +14,7 @@ class User
     private $pseudo;
     private $pass;
     private $confirmPass;
-    private $role;
+    private $img;
 
     /**
      * @return mixed
@@ -50,6 +50,7 @@ class User
         return $this;
     }
 
+
     /**
      * @return mixed
      */
@@ -82,20 +83,22 @@ class User
         $this->confirmPass = $confirmPass;
     }
 
+
     /**
      * @return mixed
      */
-    public function getRole()
+    public function getImg()
     {
-        return $this->role;
+        return $this->img;
     }
 
     /**
-     * @param mixed $role
+     * @param mixed $img
      */
-    public function setRole($role)
+    public function setImg($img)
     {
-        $this->role = $role;
+        $this->img = $img;
     }
+
 
 }

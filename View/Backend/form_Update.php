@@ -5,7 +5,7 @@
 <div class="page_form">
     <h1> Modifier Competence</h1>
 
-    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINIST </a></p>
+    <p> <a href="index.php?action=code4liokoConnexion"> RETOUR à ADMINISTRATION </a></p>
 
     <form  action="index.php?action=competence&order=updateCompetence" method="POST" id="form_CreateCompetence" enctype="multipart/form-data" >
 
@@ -34,7 +34,7 @@
         <input type="number" id="categorie" min="1" max="2" name="categorie"  value="<?=$competence->getCategorie();?>">
 
         <p>
-            <input type="submit" value="Ajouter une Competence">
+            <input type="submit" value="Modifier Competence">
         </p>
     </form>
 

@@ -15,6 +15,7 @@ use Projet5\Model\Manager\CompetenceManager;
 use Projet5\Controller\CompetenceController;
 
 use Projet5\Model\Entity\Parcour;
+use Projet5\Model\Manager\MessageManager;
 use Projet5\Model\Manager\ParcourManager;
 use Projet5\Controller\ParcourController;
 
@@ -172,12 +173,66 @@ class Controller
         $certificatManager = new CertificatManager();
         $certificats = $certificatManager->readAll();
 
-        //Certificat
+        //User
         $userManager = new UserManager();
         $users = $userManager->readAll();
 
+        //Messages_non_lu
+        $messageManager= new MessageManager();
+        $message_non_lu = $messageManager->totalMessagesNonLu();
+
         include(__DIR__ . "/../View/Backend/admin.php");
     }
+
+
+    /**
+     ** Cette fonction sert à vérifier le type de fichier envoyé et à l'ajouter dans la db
+     **/
+
+    public function saveImg()
+    {
+        // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
+        if (isset($_FILES['img']) AND $_FILES['img']['error'] == 0)
+        {
+            // Testons si le fichier n'est pas trop gros
+            if ($_FILES['img']['size'] <= 1000000)
+            {
+                // Testons si l'extension est autorisée
+                $infosfichier = pathinfo($_FILES['img']['name']);
+                $extension_upload = $infosfichier['extension'];
+                $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png', 'pdf');
+                if (in_array($extension_upload, $extensions_autorisees))
+                {
+                    // On peut valider le fichier et le stocker définitivement
+                    $executeIsOk= move_uploaded_file($_FILES['img']['tmp_name'], __DIR__ .'/../Public/images/'.basename($_FILES['img']['name']));
+
+                    if($executeIsOk)
+                    {
+                        echo '<script language="javascript"> alert("Super. Le format d\'image est valide")</script>';
+                    }
+                    else
+                    {
+                        echo '<script language="javascript"> alert("Il y a un problème d\'envoi de l\'image dans la BDD")</script>';
+                    }
+                }
+                else
+                {
+                    echo '<script language="javascript"> alert("l\'extention de votre image n\'est pas pris en charge")</script>';
+                }
+            }
+            else
+            {
+                echo '<script language="javascript"> alert("La taille de l\'image est trop grande")</script>';
+            }
+        }
+        else
+        {
+            echo '<script language="javascript"> alert("le fichier image n\'existe pas ou il y a une erreur")</script>';
+        }
+
+    }
+
+
 
 
 }

@@ -105,9 +105,6 @@ try {
             header('Location: index.php');
         }
 
-
-
-
         /**
          * GESTION DES USERS
          **/
@@ -145,6 +142,37 @@ try {
             }
         }
 
+
+        elseif ($_GET['action'] == 'code4liokoFormUpdate')
+        {
+        // Vérifie s'il y a déjà une session. Car seul une personne connecté peut update
+            if(isset($_SESSION['id']))
+            {
+                $userController->formUpdateUser($_GET['id']);
+            }
+            // Sinon, renvoi-le l'accueil, c'est un imposteur.
+            else
+            {
+                header('Location: index.php');
+            }
+        }
+
+
+        elseif ($_GET['action'] == 'code4liokoUpdate')
+        {
+            // Vérifie s'il y a déjà une session. Car seul une personne connecté peut update
+            if(isset($_SESSION['id']))
+            {
+                $userController->updateUser();
+            }
+            // Sinon, renvoi-le l'accueil, c'est un imposteur.
+            else
+            {
+                header('Location: index.php');
+            }
+        }
+
+
         elseif ($_GET['action'] == 'code4liokoDelete')
         {
             // Vérifie s'il y a déjà une session. Car seul une personne connecté peut del
@@ -158,7 +186,6 @@ try {
                 header('Location: index.php');
             }
         }
-
 
 
         /**
@@ -474,6 +501,8 @@ try {
                     $certificatController->read($_GET['id']);
                 }
             }
+
+            // RETRAITER CETTE PARTIE
             else
             {
                  if($_GET['order'] == 'readAll')
@@ -494,16 +523,67 @@ try {
 
 
         /**
-         * GESTION DES MESSAGES (FORMULAIRE DE CONTACT)
+         * GESTION DES MESSAGES ENCOURS D'ENVOI (FORMULAIRE DE CONTACT)
          **/
 
-        elseif ($_GET['action'] == 'traitement')
+        elseif ($_GET['action'] == 'recup4Message')
         {
             // PLUTOT GERER EN JS.
             // Faire vérification côté serveur
             if(!empty($_POST['nom']) && !empty($_POST['mail']) && !empty($_POST['subject']) && !empty($_POST['content']))
             {
                 $messageController->createMessage($_POST);
+
+                // ET LA FONCTION D'ENVOI DE MAIL
+
+                $messageController->SendMail($_POST);
+            }
+        }
+
+
+        /**
+         * GESTION DES MESSAGES DEJA REÇUS (COTE BACK-END)
+         **/
+
+        elseif ($_GET['action'] == 'messages')
+        {
+            // Ici, je dois vérifier si la personne qui fait l'action est connectée
+            if(isset($_SESSION['id']))
+            {
+                $messageController->readAllMessagesByPage();
+            }
+
+            else // Bye l'imposteur
+            {
+               header('Location: index.php');
+            }
+
+        }
+
+        elseif ($_GET['action'] == 'messagesDelete')
+        {
+            // Ici, je dois vérifier si la personne qui fait l'action est connectée
+            if(isset($_SESSION['id']))
+            {
+                $messageController->deleteMessage($_GET['id']);
+            }
+            else // Bye l'imposteur
+            {
+                header('Location: index.php');
+            }
+
+        }
+
+        elseif ($_GET['action'] == 'messageUpdate')
+        {
+            // Ici, je dois vérifier si la personne qui fait l'action est connectée
+            if(isset($_SESSION['id']))
+            {
+                $messageController->updateStatut();
+            }
+            else // Bye l'imposteur
+            {
+                header('Location: index.php');
             }
         }
 
@@ -511,7 +591,6 @@ try {
         {
             $controller->home();
         }
-
     }
 
     else
@@ -521,8 +600,9 @@ try {
 }
 // Si ces chose ne marchent pas affiche des messages d'erreurs
 catch (Exception $e)
-{ // S'il y a eu une erreur, alors...
-    echo $e->getMessage();
+{
+    $message= $e->getMessage();
+    include(__DIR__ . "/View/Backend/messageAdmin.php");
 }
 
 

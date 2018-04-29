@@ -20,16 +20,15 @@ class UserManager extends Connex_Db
      * Cette fonction permet de créer un utilisateur
      **/
 
-    public function create(User &$user)
+    private function create(User &$user)
     {
         //Préparation de la req
         //je lie pdoStatement à pdo car je fais une req préparée
-        $this->pdoStatement=$this->pdo->prepare('INSERT INTO myuser VALUES(NULL, :pseudo, :pass, :role)');
+        $this->pdoStatement=$this->pdo->prepare('INSERT INTO myuser VALUES(NULL, :pseudo, :pass)');
 
         //liaison des paramettres : Liaison des name du formulaire aux champs de la table post
         $this->pdoStatement->bindValue(':pseudo', $user->getPseudo(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':pass', $user->getPass(), PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':role', $user->getRole(), PDO::PARAM_STR);
         //Exécution de la req
         $executeIsOk = $this->pdoStatement->execute();
 
@@ -47,7 +46,7 @@ class UserManager extends Connex_Db
     }
 
     /**
-     *
+     * Cette fonction lis un utilisateur précis.
      **/
     public function read($id)
     {
@@ -102,6 +101,26 @@ class UserManager extends Connex_Db
 
 
     /**
+     *  Mise à jour à user
+     **/
+
+    private function update(User $user)
+    {
+        //preparation de la req
+        $this->pdoStatement = $this->pdo->prepare('UPDATE myuser set img=:img, pseudo=:pseudo WHERE id=:id');
+
+        //Liaison des paramètres des elements de formulaire a ceux des champs de la bdd
+        $this->pdoStatement->bindValue(':id', $user->getId(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':img', $user->getImg(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':pseudo', $user->getPseudo(), PDO::PARAM_STR);
+
+        $executeIsOk= $this->pdoStatement->execute();
+
+        //recuperation du résultat
+        return $executeIsOk;
+    }
+
+    /**
      *  Supprimer un compte user
      **/
 
@@ -145,9 +164,27 @@ class UserManager extends Connex_Db
             session_start();
             $_SESSION['id'] = $resultat['id'];
             $_SESSION['pseudo'] = $resultat['pseudo'];
-            $_SESSION['role'] = $resultat['role'];
         }
 
      }
+
+
+    /**
+    La fonction public save est un rAssemblement des fonctions create et de la fonction update.
+     * Elle crée un objet contact lorsque qu'il n'y a pas d'id.
+     * sinon, elle fait appel à la fonction UPDATE
+     */
+
+    public function save(User &$user)
+    {
+        if (is_null($user->getId())){
+            return $this->create($user);
+
+        }
+        else{
+            return $this->update($user);
+        }
+    }
+
 
 }

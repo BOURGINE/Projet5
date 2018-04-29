@@ -301,7 +301,7 @@ include('../Projet5/View/Frontend/header.php');
                     <h2 class="icon fa-file circled"><span class="label">Posts</span></h2>
                 </header>
 
-                <form method="POST" action="index.php">
+                <form method="POST" action="index.php?action=recup4Message" id="form_visiteur">
 
                         <span class="error"></span>
                         <input type="text" name="nom" id="nom" placeholder="Nom et prenom"/> <br/>
@@ -315,7 +315,10 @@ include('../Projet5/View/Frontend/header.php');
                         <span class="error"></span>
                         <textarea name="content" id="message" placeholder="Message" rows="4" cols="30"></textarea> <br/>
 
-                        <input type="submit" value="Envoyer" id="submit" />
+                        <input type="hidden" name="statut" id="statut" value="non lu"/> <br/>
+
+
+                        <input type="submit" value="Envoyer" id="submit"/>
                 </form>
             </section>
 
